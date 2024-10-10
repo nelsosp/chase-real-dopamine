@@ -1,12 +1,12 @@
-// App.js
+// src/App.js
 import React from 'react';
 import './App.css';
-import DareFinder from './DareFinder'; // Adjust path as needed
+import Routes from './Routes';
 
 function App() {
     return (
         <div className="App">
-            <DareFinder />
+            <Routes />
         </div>
     );
 }

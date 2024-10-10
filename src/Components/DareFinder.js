@@ -7,10 +7,10 @@ const DareFinder = () => {
 
     const fetchDare = async () => {
         try {
-            const response = await fetch('http://localhost:5000/dare'); // Update this URL
+            const response = await fetch('http://localhost:5000/dare'); 
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
-            setDare(data.dare); // Assuming your Flask returns { dare: "text" }
+            setDare(data.dare); 
         } catch (err) {
             console.error('Error fetching dare:', err);
             setError('Failed to fetch dare.');
