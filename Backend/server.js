@@ -34,7 +34,7 @@ app.get('/dare', async (req, res) => {
     }
 });
 
-// User authentication route
+// User Authentication/Login Page
 app.post('/api/auth', async (req, res) => {
     const { username, action } = req.body;
 
@@ -51,7 +51,7 @@ app.post('/api/auth', async (req, res) => {
             // If creating a user and they don't exist, create one
             if (!userDoc.exists) {
                 await userRef.set({ username });
-                return res.json({ message: 'User created successfully! You can now log in.' });
+                return res.json({ message: 'User created successfully! You can now log in!!!!!!' });
             } else {
                 return res.status(400).json({ message: 'Username already exists. Please choose another.' });
             }
