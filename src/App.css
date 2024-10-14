@@ -36,24 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* App.css */
-.dare-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.dare-button:hover {
-  background-color: #0056b3;
-}
-
-.dare-text {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
-}

@@ -1,5 +1,5 @@
-// DareFinder.js
 import React, { useState } from 'react';
+import './DareFinder.css';
 
 const DareFinder = () => {
     const [dare, setDare] = useState('');
@@ -16,10 +16,9 @@ const DareFinder = () => {
             setError('Failed to fetch dare.');
         }
     };
-    
 
     return (
-        <div>
+        <div className="container">
             <h1>Daily Dare</h1>
             <button onClick={fetchDare} className="dare-button">
                 Get Today's Dare

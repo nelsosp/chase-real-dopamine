@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+// Login.js
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import WebLogin from './WebLogin';
+import PhoneLogin from './PhoneLogin';
+import './WebLogin.css';
+import './PhoneLogin.css'
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -66,7 +70,6 @@ const Login = () => {
                 throw new Error(errorData.message);
             }
 
-            // const data = await response.json();
             setSuccessMessage('User created successfully! You can now log in.');
         } catch (err) {
             setError(err.message);
@@ -81,63 +84,75 @@ const Login = () => {
         }, 2000);
     };
 
-const displayMessages = () => {
-    let index = 0;
+    const displayMessages = () => {
+        let index = 0;
 
-    const showNextMessage = () => {
-        setIsFadingOut(false); // Reset fading state
-        setMessageIndex(index);
-        index++;
+        const showNextMessage = () => {
+            setIsFadingOut(false);
+            setMessageIndex(index);
+            index++;
 
-        // Fade out after the message is displayed
-        setTimeout(() => {
-            setIsFadingOut(true); // Start fade out
             setTimeout(() => {
-                setMessageIndex(-1); // Hide message
-                if (index < messages.length) {
-                    setTimeout(showNextMessage, 1000); // Wait before showing the next message
-                } else {
-                    navigate('/dare-finder');
-                    // Remove fade-to-black class after navigation
-                    setTimeout(() => {
-                        document.body.classList.remove('fade-to-black');
-                    }, 100); // Small delay to ensure class is removed after navigation
-                }
-            }, 1000); // Duration of fade out
-        }, 4000); // Message duration before fading out
+                setIsFadingOut(true);
+                setTimeout(() => {
+                    setMessageIndex(-1);
+                    if (index < messages.length) {
+                        setTimeout(showNextMessage, 1000);
+                    } else {
+                        navigate('/dare-finder');
+                        setTimeout(() => {
+                            document.body.classList.remove('fade-to-black');
+                        }, 100);
+                    }
+                }, 1000);
+            }, 4000);
+        };
+
+        showNextMessage();
     };
 
-    showNextMessage();
-};
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 430);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 430);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
         <div className="login-container">
-            <h2>Login / Create User</h2>
-            {error && <div className="error">{error}</div>}
-            {successMessage && <div className="success">{successMessage}</div>}
-            
-            {messageIndex !== -1 && (
-                <div className={`message ${isFadingOut ? 'fade-out' : 'fade-in'}`}>
-                    {messages[messageIndex]}
-                </div>
+            {isMobile ? (
+                <PhoneLogin 
+                    username={username}
+                    setUsername={setUsername}
+                    handleLogin={handleLogin}
+                    handleCreateUser={handleCreateUser}
+                    error={error}
+                    successMessage={successMessage}
+                    isLoading={isLoading}
+                    messageIndex={messageIndex}
+                    isFadingOut={isFadingOut}
+                    messages={messages}
+                />
+            ) : (
+                <WebLogin 
+                    username={username}
+                    setUsername={setUsername}
+                    handleLogin={handleLogin}
+                    handleCreateUser={handleCreateUser}
+                    error={error}
+                    successMessage={successMessage}
+                    isLoading={isLoading}
+                    messageIndex={messageIndex}
+                    isFadingOut={isFadingOut}
+                    messages={messages}
+                />
             )}
-    
-            <form className={isLoading ? 'fade-out' : ''}>
-                <div>
-                    <label>
-                        Username:
-                        <input
-                            type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        />
-                    </label>
-                </div>
-                <button type="button" onClick={handleLogin}>Login</button>
-                <button type="button" onClick={handleCreateUser}>Create User</button>
-            </form>
         </div>
     );
 };

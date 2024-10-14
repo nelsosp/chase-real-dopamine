@@ -1,4 +1,4 @@
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
       opacity: 0;
   }
@@ -24,12 +24,12 @@
 
 .fade-in {
   opacity: 1;
-  animation: fadeIn 1s forwards; /* Apply fade-in animation */
+  animation: fadeIn 1s forwards;
 }
 
 .fade-out {
   opacity: 0;
-  animation: fadeOut 1s forwards; /* Apply fade-out animation */
+  animation: fadeOut 1s forwards;
 }
 
 body, html {
@@ -78,4 +78,4 @@ button {
 
 button:hover {
   background-color: #0056b3;
-}
+} */
