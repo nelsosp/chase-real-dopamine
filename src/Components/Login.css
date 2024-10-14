@@ -1,58 +1,81 @@
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+.message {
+  color: white;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  animation: fadeIn 1s forwards; /* Apply fade-in animation */
+}
+
+.fade-out {
+  opacity: 0;
+  animation: fadeOut 1s forwards; /* Apply fade-out animation */
+}
 
 body, html {
-    height: 100%; 
-    margin: 0; 
-  }
+  height: 100%; 
+  margin: 0; 
+}
 
-  body.fade-to-black {
-    background-color: black;
-    transition: background-color 1s ease;
-    z-index: 5;
-  }
-  
-  .login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 50vh; 
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 5px;
-    box-shadow: 2px 2px 12px black;
-    transition: opacity 1s ease;
-  }
+body.fade-to-black {
+  background-color: black;
+  transition: background-color 1s ease;
+  z-index: 5;
+}
 
-  /* .login-container.fade-out {
-    opacity: 0;
-  } */
-  
-  .error {
-    color: red;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; 
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 12px black;
+}
 
-  .message {
-    color: white;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-  
-  .message.show {
-    opacity: 1;
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }

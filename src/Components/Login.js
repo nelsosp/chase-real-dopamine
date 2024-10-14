@@ -8,6 +8,7 @@ const Login = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [messageIndex, setMessageIndex] = useState(-1);
+    const [isFadingOut, setIsFadingOut] = useState(false);
     const messages = [
         "Today, the world spends half their life behind a screen",
         "Dopamine Dares rises to this problem to promote a challenge to you",
@@ -19,7 +20,7 @@ const Login = () => {
         e.preventDefault();
         setError('');
         setSuccessMessage('');
-        setIsLoading(true);
+        setIsLoading(false);
 
         try {
             const response = await fetch('http://localhost:5000/api/auth', {
@@ -27,7 +28,7 @@ const Login = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, action: 'login' }), // Indicate login
+                body: JSON.stringify({ username, action: 'login' }),
             });
 
             if (!response.ok) {
@@ -36,13 +37,13 @@ const Login = () => {
             }
 
             const data = await response.json();
-            // console.log('Login successful:', data);
-            localStorage.setItem('token', data.token); // Adjust based on your setup
+            localStorage.setItem('token', data.token);
             setSuccessMessage('Login successful!');
-
+            setIsLoading(true);
             fadeToBlackAndDisplayMessages();
         } catch (err) {
             setError(err.message);
+            setIsLoading(false);
         }
     };
 
@@ -57,7 +58,7 @@ const Login = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, action: 'create' }), // Indicate user creation
+                body: JSON.stringify({ username, action: 'create' }),
             });
 
             if (!response.ok) {
@@ -65,8 +66,7 @@ const Login = () => {
                 throw new Error(errorData.message);
             }
 
-            const data = await response.json();
-            console.log('Data from Backend:', data);
+            // const data = await response.json();
             setSuccessMessage('User created successfully! You can now log in.');
         } catch (err) {
             setError(err.message);
@@ -78,33 +78,52 @@ const Login = () => {
 
         setTimeout(() => {
             displayMessages();
-        }, 1000);
+        }, 2000);
     };
 
-    const displayMessages = () => {
-        messages.forEach((msg, index) => {
+const displayMessages = () => {
+    let index = 0;
+
+    const showNextMessage = () => {
+        setIsFadingOut(false); // Reset fading state
+        setMessageIndex(index);
+        index++;
+
+        // Fade out after the message is displayed
+        setTimeout(() => {
+            setIsFadingOut(true); // Start fade out
             setTimeout(() => {
-                setMessageIndex(index);
-                if (index === messages.length - 1) {
+                setMessageIndex(-1); // Hide message
+                if (index < messages.length) {
+                    setTimeout(showNextMessage, 1000); // Wait before showing the next message
+                } else {
+                    navigate('/dare-finder');
+                    // Remove fade-to-black class after navigation
                     setTimeout(() => {
-                        navigate('/dare-finder');
-                    }, 2000);
+                        document.body.classList.remove('fade-to-black');
+                    }, 100); // Small delay to ensure class is removed after navigation
                 }
-            }, index * 3000)
-        })
+            }, 1000); // Duration of fade out
+        }, 4000); // Message duration before fading out
     };
+
+    showNextMessage();
+};
+
 
     return (
-        <div className={`login-container ${isLoading ? 'fade-out' : ''}`}>
+        <div className="login-container">
             <h2>Login / Create User</h2>
             {error && <div className="error">{error}</div>}
             {successMessage && <div className="success">{successMessage}</div>}
+            
             {messageIndex !== -1 && (
-                <div className={`message fade ${messageIndex !== -1 ? 'show' : ''}`}>
+                <div className={`message ${isFadingOut ? 'fade-out' : 'fade-in'}`}>
                     {messages[messageIndex]}
                 </div>
             )}
-            <form>
+    
+            <form className={isLoading ? 'fade-out' : ''}>
                 <div>
                     <label>
                         Username:
