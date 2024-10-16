@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WebLogin from './WebLogin';
 import PhoneLogin from './PhoneLogin';
-import './WebLogin.css';
-import './PhoneLogin.css'
 
 const Login = () => {
     const [username, setUsername] = useState('');

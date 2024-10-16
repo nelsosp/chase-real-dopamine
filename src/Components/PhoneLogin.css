@@ -20,6 +20,7 @@
     color: white;
     opacity: 0;
     transition: opacity 1s ease-in-out;
+    /* this is already centered because of WebLogin applying over...bad design...dont do this again */
 }
 
 .fade-in {
@@ -32,11 +33,9 @@
     animation: fadeOut 1s forwards;
 }
 
-body, html {
-    height: 100%; 
-    margin: 0; 
-    /* background-color: red; */
- } 
+   /* .phone.body, .phone-html {
+    background-color: orange;
+   } */
 
 body.fade-to-black {
     background-color: black;
@@ -57,7 +56,30 @@ body.fade-to-black {
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 2px 2px 12px black;
-    /* background-color: rgba(255, 255, 255, 0.8); */
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.phone-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    width: 100vw; 
+    position: relative;
+    /* put picture background here */
+    background-color: pink;
+}
+
+.phone-page-container h1 {
+    color: purple;
+    font-size: 2.5em;
+    /* margin: 0; 
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    text-align: center;  */
 }
 
 .fade-out {

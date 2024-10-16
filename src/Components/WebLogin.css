@@ -20,6 +20,11 @@
     color: white;
     opacity: 0;
     transition: opacity 1s ease-in-out;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    text-align: center; 
   }
   
   .fade-in {
@@ -32,35 +37,40 @@
     animation: fadeOut 1s forwards;
   }
   
-  body, html {
-    height: 100%; 
-    margin: 0; 
-    display: flex;        
-    justify-content: center; 
-    align-items: center;     
-    /* background-color: blue; */
- } 
-  
-  body.fade-to-black {
-    background-color: black;
-    transition: background-color 1s ease;
-    z-index: 5;
-  }
-  
   .web-login-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50vh; 
+    height: 40vh; 
     max-width: 400px;
     margin: auto;
     padding: 20px;
-    /* adjust for future picture */
-    /* background-color: rgba(255, 255, 255, 0.8);  */
+    background-color: rgba(255, 255, 255, 0.8); 
     border: 1px solid rgba(0, 0, 0, 0.5); 
     border-radius: 5px;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.5); 
+}
+
+.web-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  /* put video background here */
+  background-color: lightslategrey;
+}
+.web-page-container h1 {
+  color: purple;
+  font-size: 3em;
+  /* margin: 0;  
+  position: absolute; 
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  text-align: center;  */
 }
   
   .fade-out {
