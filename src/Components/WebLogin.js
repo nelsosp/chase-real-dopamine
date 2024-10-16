@@ -1,4 +1,5 @@
 import './WebLogin.css';
+import video from '../assets/Login.mp4';
 
 const WebLogin = ({ username, setUsername, handleLogin, handleCreateUser, error, successMessage, isLoading, messageIndex, isFadingOut, messages }) => {
 
@@ -11,6 +12,7 @@ const WebLogin = ({ username, setUsername, handleLogin, handleCreateUser, error,
                 )}
         <form className={isLoading ? 'fade-out' : ''}>
         <div className="web-page-container">
+        <video className="background-video" src={video} muted loop autoPlay></video>
             <h1>Dopamine Dares</h1>
             <div className="web-login-container">
                 <h2>Login</h2>

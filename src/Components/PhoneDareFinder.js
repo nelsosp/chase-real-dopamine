@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './PhoneDareFinder.css';
+import image from '../assets/PhoneDareFinder.jpg'
 
 const PhoneDareFinder = ({ dare, error, fetchDare }) => {
     useEffect(() => {
@@ -14,12 +15,13 @@ const PhoneDareFinder = ({ dare, error, fetchDare }) => {
 
     return (
         <div className="phone-dare-container">
-            <h1>Daily Dare - Phone</h1>
+            <img src={image} alt='Background' className='background-image' />
+            <h1>Daily Dare</h1>
             <button onClick={fetchDare} className="dare-button">
                 Get Today's Dare
             </button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            {dare && <p className="dare-text">{dare}</p>}
+            {dare && <p className="phone-dare-text">{dare}</p>}
         </div>
     );
 };

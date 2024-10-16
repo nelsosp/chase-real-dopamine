@@ -5,12 +5,20 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    /* put video background here */
-    background-color: lightseagreen; 
     font-family: 'Arial', sans-serif; 
-    color: #333;
+    color: white;
     text-align: center;
 }
+/* .background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  } */
 
 .web-page-container h1 {
     color: purple; 
@@ -38,10 +46,10 @@
 }
 
 
-.dare-text {
+.web-dare-text {
     margin-top: 20px; 
     font-size: 1.5em;
-    color: #555; 
+    color: white; 
 }
 
 

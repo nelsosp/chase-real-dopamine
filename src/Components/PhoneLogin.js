@@ -1,4 +1,5 @@
 import './PhoneLogin.css';
+import image from '../assets/PhoneLogin.jpg'
 
 const PhoneLogin = ({ username, setUsername, handleLogin, handleCreateUser, error, successMessage, isLoading, messageIndex, isFadingOut, messages }) => {
 
@@ -11,6 +12,7 @@ const PhoneLogin = ({ username, setUsername, handleLogin, handleCreateUser, erro
         )}
         <form className={isLoading ? 'fade-out' : ''}>
         <div className='phone-page-container'>
+        <img src={image} alt='Background' className='background-image' />
             <h1>Dopamine Dares</h1>
             <div className="phone-login-container">
                 <h2>Login</h2>

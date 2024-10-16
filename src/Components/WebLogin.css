@@ -53,14 +53,23 @@
 }
 
 .web-page-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
-  /* put video background here */
-  background-color: lightslategrey;
+}
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  z-index: -1; /* Keep it behind the content */
+  transform: translate(-50%, -50%);
+  object-fit: cover;
 }
 .web-page-container h1 {
   color: purple;
