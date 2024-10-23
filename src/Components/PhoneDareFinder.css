@@ -11,9 +11,10 @@
 }
 
 .phone-dare-container h1 {
-    color: purple; 
-    font-size: 2.5em;
-    margin-bottom: 20px; 
+    position: absolute;
+    top: 50px;
+    color: white; 
+    font-size: 3em;
 }
 
 .dare-button {
