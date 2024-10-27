@@ -97,7 +97,7 @@ const Login = () => {
                     if (index < messages.length) {
                         setTimeout(showNextMessage, 1000);
                     } else {
-                        navigate('/dare-finder');
+                        navigate('/dare-finder', { state: {username} } );
                         setTimeout(() => {
                             document.body.classList.remove('fade-to-black');
                         }, 100);

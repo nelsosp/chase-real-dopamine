@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import PhoneDareFinder from './PhoneDareFinder';
 import WebDareFinder from './WebDareFinder';
 
 const DareFinder = () => {
+    const location = useLocation();
+    const { username } = location.state || {};
+
     const [dare, setDare] = useState('');
     const [error, setError] = useState('');
     const [isMobile, setIsMobile] = useState(window.innerWidth < 430);
@@ -37,6 +41,7 @@ const DareFinder = () => {
                     error={error}
                     setError={setError}
                     fetchDare={fetchDare}
+                    username={username}
                 />
             ) : (
                 <WebDareFinder
@@ -45,6 +50,7 @@ const DareFinder = () => {
                     error={error}
                     setError={setError}
                     fetchDare={fetchDare}
+                    username={username}
                 />
             )}
         </>

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import './WebDareFinder.css';
 import video from '../assets/WebDareFinder.mp4'
+import DareCompletion from './DareCompletion';
 
-const WebDareFinder = ({ dare, error, fetchDare }) => {
+const WebDareFinder = ({ dare, error, fetchDare, username }) => {
     useEffect(() => {
         document.body.classList.add('web-body');
         document.documentElement.classList.add('web-html');
@@ -22,6 +23,7 @@ const WebDareFinder = ({ dare, error, fetchDare }) => {
             </button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {dare && <p className="web-dare-text">{dare}</p>}
+            {dare && <DareCompletion username={username}/>}
         </div>
     );
 };

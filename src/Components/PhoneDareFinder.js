@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import './PhoneDareFinder.css';
 import image from '../assets/PhoneDareFinder.jpg'
+import DareCompletion from './DareCompletion';
 
-const PhoneDareFinder = ({ dare, error, fetchDare }) => {
+const PhoneDareFinder = ({ dare, error, fetchDare, username }) => {
     useEffect(() => {
         document.body.classList.add('phone-body');
         document.documentElement.classList.add('phone-html');
@@ -22,6 +23,7 @@ const PhoneDareFinder = ({ dare, error, fetchDare }) => {
             </button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {dare && <p className="phone-dare-text">{dare}</p>}
+            {dare && <DareCompletion username={username}/>}
         </div>
     );
 };

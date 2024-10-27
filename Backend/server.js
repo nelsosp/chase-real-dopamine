@@ -51,6 +51,11 @@ app.post('/api/auth', async (req, res) => {
             // If creating a user and they don't exist, create one
             if (!userDoc.exists) {
                 await userRef.set({ username });
+
+                //Create corresponding userProgress document/collection
+                const userProgressRef = db.collection('userProgress').doc(username);
+                await userProgressRef.set({ totalCompleted: 0 });
+
                 return res.json({ message: 'User created successfully! You can now log in!!!!!!' });
             } else {
                 return res.status(400).json({ message: 'Username already exists. Please choose another.' });
@@ -68,6 +73,31 @@ app.post('/api/auth', async (req, res) => {
     } catch (error) {
         console.error('Error handling request:', error);
         res.status(500).json({ message: 'Server error, please try again later.' });
+    }
+});
+
+// endpoint to handle incrementing totalCompleted count collection/document
+app.post('/api/complete-dare', async (req, res) => {
+    console.log('Request Body:', req.body);
+    const { username } = req.body;
+
+    if (!username || username.trim() === '') {
+        return res.status(400).json({ message: 'Username cannot be empty' });
+    }
+
+    try {
+        const userProgressRef = db.collection('userProgress').doc(username);
+        const userProgressDoc = await userProgressRef.get();
+
+        if (userProgressDoc.exists) {
+            await userProgressRef.update({ totalCompleted: admin.firestore.FieldValue.increment(1) });
+            return res.json({ message: 'Dare completion recorded successfully!' });
+        } else {
+            return res.status(404).json({ message: 'User progress not found.' });
+        }
+    } catch (error) {
+        console.error('Error updating user progress', error);
+        res.status(500).json({ message: 'Server error' });
     }
 });
 
