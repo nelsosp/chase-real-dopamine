@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "./DareCompletion.css";
 
 const DareCompletion = ({ username }) => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [completedFive, setCompletedFive] = useState(false);
 
   const completeDare = async () => {
     console.log("Username being sent:", username); // Log the username
@@ -21,9 +23,13 @@ const DareCompletion = ({ username }) => {
       });
 
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message);
-
-      setMessage(data.message);
+      // if (!response.ok) throw new Error(data.message);
+      if (data.compeltedFive) {
+        setMessage(data.message);
+        setCompletedFive(true);
+      } else {
+        setMessage(data.message);
+      }
     } catch (err) {
       setError("Error completing dare: " + err.message);
     } finally {
@@ -31,12 +37,26 @@ const DareCompletion = ({ username }) => {
     }
   };
 
+  useEffect(() => {
+    if (completedFive) {
+      setTimeout(() => {
+        setMessage(
+          "Your journey is growing. You've completed 5 dares, keep going."
+        );
+      }, 1000);
+    }
+  }, [completedFive]);
+
   return (
     <div>
       <button onClick={completeDare} disabled={loading}>
         {loading ? "Completing..." : "Complete Dare"}
       </button>
-      {message && <p style={{ color: "green" }}>{message}</p>}
+      {message && (
+        <div className={`message ${completedFive ? "fade-out" : "fade-in"}`}>
+          <p style={{ color: completedFive ? "green" : "white" }}>{message}</p>
+        </div>
+      )}
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );

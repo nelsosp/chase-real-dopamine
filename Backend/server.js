@@ -81,6 +81,7 @@ app.post("/api/auth", async (req, res) => {
 });
 
 // endpoint to handle incrementing totalCompleted count collection/document
+// Endpoint to handle incrementing totalCompleted count and checking if 5 dares are completed
 app.post("/api/complete-dare", async (req, res) => {
   console.log("Request Body:", req.body);
   const { username } = req.body;
@@ -94,10 +95,24 @@ app.post("/api/complete-dare", async (req, res) => {
     const userProgressDoc = await userProgressRef.get();
 
     if (userProgressDoc.exists) {
+      // Increment the totalCompleted field
+      const currentTotal = userProgressDoc.data().totalCompleted;
       await userProgressRef.update({
         totalCompleted: admin.firestore.FieldValue.increment(1),
       });
-      return res.json({ message: "Dare completion recorded successfully!" });
+
+      // Check if the user has completed 5 dares
+      if (currentTotal + 1 === 5) {
+        return res.json({
+          message: "Congratulations! You’ve completed 5 dares!",
+          completedFive: true, // Flag to indicate completion of 5 dares
+        });
+      } else {
+        return res.json({
+          message: "Dare completion recorded successfully!",
+          completedFive: false,
+        });
+      }
     } else {
       return res.status(404).json({ message: "User progress not found." });
     }
