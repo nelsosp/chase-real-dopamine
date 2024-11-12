@@ -11,9 +11,19 @@ const DareFinder = () => {
   const [error, setError] = useState("");
   const [isMobile, setIsMobile] = useState(window.innerWidth < 430);
 
+  // Function to get the backend URL based on environment
+  const getBackendUrl = () => {
+    // In Docker, use the service name (backend), otherwise use localhost
+    return window.location.hostname === "localhost"
+      ? "http://localhost:5001" // For local development
+      : "http://backend:5001"; // For Docker
+  };
+
   const fetchDare = async () => {
+    const backendUrl = getBackendUrl(); // Get the correct backend URL
+
     try {
-      const response = await fetch("http://localhost:5001/dare");
+      const response = await fetch(`${backendUrl}/dare`);
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
       setDare(data.dare);

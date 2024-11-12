@@ -1,4 +1,3 @@
-// Login.js
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PhoneLogin from "./PhoneLogin";
@@ -18,14 +17,24 @@ const Login = () => {
   ];
   const navigate = useNavigate();
 
+  // Function to get the backend URL based on environment
+  const getBackendUrl = () => {
+    // In Docker, use the service name (backend), otherwise use localhost
+    return window.location.hostname === "localhost"
+      ? "http://localhost:5001" // For local development
+      : "http://backend:5001"; // For Docker
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
     setSuccessMessage("");
     setIsLoading(false);
 
+    const backendUrl = getBackendUrl(); // Get the correct backend URL
+
     try {
-      const response = await fetch("http://localhost:5001/api/auth", {
+      const response = await fetch(`${backendUrl}/api/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,8 +63,10 @@ const Login = () => {
     setError("");
     setSuccessMessage("");
 
+    const backendUrl = getBackendUrl(); // Get the correct backend URL
+
     try {
-      const response = await fetch("http://localhost:5001/api/auth", {
+      const response = await fetch(`${backendUrl}/api/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
