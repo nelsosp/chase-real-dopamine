@@ -11,7 +11,15 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-app.use(cors());
+// Configure CORS to allow only requests from the frontend URL
+const corsOptions = {
+  origin:
+    "https://chase-real-dopamine-frontend-1047292940162.us-central1.run.app", // Only allow requests from this frontend URL
+  methods: "GET, POST",
+  allowedHeaders: "Content-Type",
+};
+
+app.use(cors(corsOptions)); // Apply CORS configuration to the app
 app.use(express.json()); // To parse JSON bodies
 
 // Existing get request for dares

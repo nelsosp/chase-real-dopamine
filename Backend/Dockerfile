@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Copy serviceAccountKey.json into the container
-COPY ./config/serviceAccountKey.json ./config/serviceAccountKey.json
+# COPY ./config/serviceAccountKey.json ./config/serviceAccountKey.json
 
 # Expose the port your Node.js server listens on (default is 5000)
 EXPOSE 5001

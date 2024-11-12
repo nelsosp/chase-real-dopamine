@@ -11,12 +11,13 @@ const DareFinder = () => {
   const [error, setError] = useState("");
   const [isMobile, setIsMobile] = useState(window.innerWidth < 430);
 
-  // Function to get the backend URL based on environment
   const getBackendUrl = () => {
-    // In Docker, use the service name (backend), otherwise use localhost
-    return window.location.hostname === "localhost"
-      ? "http://localhost:5001" // For local development
-      : "http://backend:5001"; // For Docker
+    if (window.location.hostname === "localhost") {
+      return "http://localhost:5001"; // For local development
+    } else {
+      // Use the Cloud Run URL for the backend
+      return "https://chase-real-dopamine-backend-1047292940162.us-central1.run.app";
+    }
   };
 
   const fetchDare = async () => {
