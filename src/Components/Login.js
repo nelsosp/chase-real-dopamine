@@ -121,11 +121,11 @@ const Login = () => {
     showNextMessage();
   };
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 430);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 431);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 430);
+      setIsMobile(window.innerWidth < 431);
     };
 
     window.addEventListener("resize", handleResize);
