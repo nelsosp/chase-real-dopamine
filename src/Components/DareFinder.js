@@ -9,7 +9,7 @@ const DareFinder = () => {
 
   const [dare, setDare] = useState("");
   const [error, setError] = useState("");
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 430);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 431);
 
   const getBackendUrl = () => {
     if (window.location.hostname === "localhost") {
@@ -35,7 +35,7 @@ const DareFinder = () => {
   };
 
   const handleResize = () => {
-    setIsMobile(window.innerWidth < 430);
+    setIsMobile(window.innerWidth < 431);
   };
 
   React.useEffect(() => {
