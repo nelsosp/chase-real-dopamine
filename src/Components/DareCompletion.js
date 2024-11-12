@@ -7,24 +7,33 @@ const DareCompletion = ({ username }) => {
   const [error, setError] = useState("");
   const [completedFive, setCompletedFive] = useState(false);
 
+  // Function to get the backend URL based on environment
+  const getBackendUrl = () => {
+    // In Docker, use the service name (backend), otherwise use localhost
+    return window.location.hostname === "localhost"
+      ? "http://localhost:5001" // For local development
+      : "http://backend:5001"; // For Docker
+  };
+
   const completeDare = async () => {
     console.log("Username being sent:", username); // Log the username
     setLoading(true);
     setMessage("");
     setError("");
 
+    const backendUrl = getBackendUrl(); // Get the correct backend URL
+
     try {
-      const response = await fetch("http://localhost:5001/api/complete-dare", {
+      const response = await fetch(`${backendUrl}/api/complete-dare`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username }), // Ensure this is defined
+        body: JSON.stringify({ username }), // Send the username in the request body
       });
 
       const data = await response.json();
-      // if (!response.ok) throw new Error(data.message);
-      if (data.compeltedFive) {
+      if (data.completedFive) {
         setMessage(data.message);
         setCompletedFive(true);
       } else {
