@@ -11,10 +11,20 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-// Configure CORS to allow only requests from the frontend URL
+// Dynamically configure CORS based on the environment
 const corsOptions = {
-  origin:
-    "https://chase-real-dopamine-frontend-1047292940162.us-central1.run.app", // Only allow requests from this frontend URL
+  origin: (origin, callback) => {
+    // Allow localhost and the production frontend URL
+    if (
+      origin === "http://localhost:3000" ||
+      origin ===
+        "https://chase-real-dopamine-frontend-1047292940162.us-central1.run.app"
+    ) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error("Not allowed by CORS")); // Reject the request
+    }
+  },
   methods: "GET, POST",
   allowedHeaders: "Content-Type",
 };
@@ -88,8 +98,7 @@ app.post("/api/auth", async (req, res) => {
   }
 });
 
-// endpoint to handle incrementing totalCompleted count collection/document
-// Endpoint to handle incrementing totalCompleted count and checking if 5 dares are completed
+// Endpoint to handle incrementing totalCompleted count collection/document
 app.post("/api/complete-dare", async (req, res) => {
   console.log("Request Body:", req.body);
   const { username } = req.body;
