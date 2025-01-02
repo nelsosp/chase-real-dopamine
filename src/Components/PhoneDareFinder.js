@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import image from "../assets/PhoneDareFinder.jpg";
 import DareCompletion from "./DareCompletion";
 import "./PhoneDareFinder.css";
+import PhoneMenuBar from "./PhoneMenuBar";
 
 const PhoneDareFinder = ({ dare, error, fetchDare, username }) => {
   useEffect(() => {
@@ -16,6 +17,9 @@ const PhoneDareFinder = ({ dare, error, fetchDare, username }) => {
 
   return (
     <div className="phone-dare-container">
+      <div>
+        <PhoneMenuBar />
+      </div>
       <img src={image} alt="Background" className="background-image" />
       <h1>Daily Dare</h1>
       <button onClick={fetchDare} className="dare-button">

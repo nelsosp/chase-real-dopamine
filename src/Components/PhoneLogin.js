@@ -1,5 +1,6 @@
 import image from "../assets/PhoneLogin.jpg";
 import "./PhoneLogin.css";
+import PhoneMenuBar from "./PhoneMenuBar";
 
 const PhoneLogin = ({
   username,
@@ -23,6 +24,9 @@ const PhoneLogin = ({
       <form className={isLoading ? "fade-out" : ""}>
         <div className="phone-page-container">
           <img src={image} alt="Background" className="background-image" />
+          <div>
+            <PhoneMenuBar />
+          </div>
           <h1>Dopamine Dares</h1>
           <div className="phone-login-container">
             {error && <div className="error">{error}</div>}
