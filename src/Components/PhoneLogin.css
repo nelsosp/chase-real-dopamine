@@ -1,114 +1,146 @@
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .message {
-    color: white;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    /* this is already centered because of WebLogin applying over...bad design...dont do this again */
+  color: white;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  /* this is already centered because of WebLogin applying over...bad design...dont do this again */
 }
 
 .fade-in {
-    opacity: 1;
-    animation: fadeIn 1s forwards;
+  opacity: 1;
+  animation: fadeIn 1s forwards;
 }
 
 .fade-out {
-    opacity: 0;
-    animation: fadeOut 1s forwards;
+  opacity: 0;
+  animation: fadeOut 1s forwards;
 }
 
-   .phone.body, .phone-html {
-    overflow: hidden;
-   }
+.phone.body,
+.phone-html {
+  overflow: hidden;
+}
 
 body.fade-to-black {
-    background-color: black;
-    transition: background-color 1s ease;
-    z-index: 5;
+  background-color: black;
+  transition: background-color 1s ease;
+  z-index: 5;
 }
 
 .phone-login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto; 
-    max-width: 300px; 
-    width: 90%; 
-    margin: auto;
-    padding: 10px; 
-    border: 1px solid black;
-    border-radius: 5px;
-    box-shadow: 2px 2px 12px black;
-    background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  max-width: 300px;
+  width: 90%;
+  margin: auto;
+  padding: 10px;
 }
 
 .phone-page-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh;
-    width: 100vw; 
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
 }
 
 .background-image {
-    position: absolute; 
-    top: 0;
-    left: 0;
-    height: 100%; 
-    width: 100%; 
-    object-fit: cover; 
-    z-index: -1; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .phone-page-container h1 {
-    color: purple;
-    font-size: 2.5em;
-    /* margin: 0; 
+  color: #f9c21b;
+  font-size: 2em;
+  /* margin: 0;
     position: absolute;
     top: 50%;
-    left: 50%; 
+    left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;  */
 }
 
+.phone-input-fields {
+  color: #f9c21b;
+  text-align: left;
+  display: block;
+}
+
+label.phone-input-fields input {
+  text-align: left;
+  border: none;
+  border-color: transparent;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 0px;
+}
+
+.phone-forgot-password-link {
+  color: #f9c21b;
+  text-align: right;
+  display: block;
+  padding: 5px;
+}
+
 .fade-out {
-    opacity: 0;
-    transition: opacity 1s ease;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 .error {
-    color: red;
-    margin-bottom: 10px;
+  color: red;
+  margin-bottom: 10px;
 }
 
-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.phone-login-button {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  height: 50px;
+  border: 1px solid #f9c21b;
+}
+.phone-create-user-button {
+  padding: 10px;
+  background-color: #f9c21b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  height: 50px;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
