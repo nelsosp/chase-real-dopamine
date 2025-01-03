@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import video from "../assets/WebDareFinder.mp4";
 import DareCompletion from "./DareCompletion";
+import MenuBar from "./MenuBar";
 import "./WebDareFinder.css";
-import WebMenuBar from "./WebMenuBar";
 
 const WebDareFinder = ({ dare, error, fetchDare, username }) => {
   useEffect(() => {
@@ -18,7 +18,7 @@ const WebDareFinder = ({ dare, error, fetchDare, username }) => {
   return (
     <div className="web-dare-container">
       <div>
-        <WebMenuBar />
+        <MenuBar />
       </div>
       <video
         className="background-video"

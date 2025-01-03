@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import image from "../assets/PhoneDareFinder.jpg";
 import DareCompletion from "./DareCompletion";
+import MenuBar from "./MenuBar";
 import "./PhoneDareFinder.css";
 import PhoneHeader from "./PhoneHeader";
-import PhoneMenuBar from "./PhoneMenuBar";
 
 const PhoneDareFinder = ({ dare, error, fetchDare, username }) => {
   useEffect(() => {
@@ -22,7 +22,7 @@ const PhoneDareFinder = ({ dare, error, fetchDare, username }) => {
         <PhoneHeader />
       </div>
       <div>
-        <PhoneMenuBar />
+        <MenuBar />
       </div>
       <img src={image} alt="Background" className="background-image" />
       <h1>Daily Dare</h1>

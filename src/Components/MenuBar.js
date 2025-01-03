@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./PhoneMenuBar.css";
+import "./MenuBar.css";
 
-const PhoneMenuBar = () => {
+const MenuBar = () => {
   // State to control the visibility of the menu
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -58,4 +58,4 @@ const PhoneMenuBar = () => {
   );
 };
 
-export default PhoneMenuBar;
+export default MenuBar;
