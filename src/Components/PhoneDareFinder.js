@@ -3,7 +3,7 @@ import image from "../assets/PhoneDareFinder.jpg";
 import DareCompletion from "./DareCompletion";
 import MenuBar from "./MenuBar";
 import "./PhoneDareFinder.css";
-import PhoneHeader from "./PhoneHeader";
+import UsernameBar from "./UsernameBar";
 
 const PhoneDareFinder = ({ dare, error, fetchDare, username }) => {
   useEffect(() => {
@@ -19,7 +19,7 @@ const PhoneDareFinder = ({ dare, error, fetchDare, username }) => {
   return (
     <div className="phone-dare-container">
       <div>
-        <PhoneHeader />
+        <UsernameBar />
       </div>
       <div>
         <MenuBar />

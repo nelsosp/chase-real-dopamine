@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import video from "../assets/WebDareFinder.mp4";
 import DareCompletion from "./DareCompletion";
 import MenuBar from "./MenuBar";
+import UsernameBar from "./UsernameBar";
 import "./WebDareFinder.css";
 
 const WebDareFinder = ({ dare, error, fetchDare, username }) => {
@@ -19,6 +20,9 @@ const WebDareFinder = ({ dare, error, fetchDare, username }) => {
     <div className="web-dare-container">
       <div>
         <MenuBar />
+      </div>
+      <div>
+        <UsernameBar />
       </div>
       <video
         className="background-video"

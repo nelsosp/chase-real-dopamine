@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./PhoneHeader.css"; // Optional CSS file for styling
+import "./UsernameBar.css"; // Optional CSS file for styling
 
-const PhoneHeader = () => {
+const UsernameBar = () => {
   const [username, setUsername] = useState(null);
   const [showLogout, setShowLogout] = useState(false); // New state to manage the visibility of logout option
   const navigate = useNavigate();
@@ -56,4 +56,4 @@ const PhoneHeader = () => {
   );
 };
 
-export default PhoneHeader;
+export default UsernameBar;
