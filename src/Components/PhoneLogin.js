@@ -1,6 +1,6 @@
 import image from "../assets/PhoneLogin.jpg";
+import MenuBar from "./MenuBar";
 import "./PhoneLogin.css";
-import PhoneMenuBar from "./PhoneMenuBar";
 
 const PhoneLogin = ({
   username,
@@ -25,7 +25,7 @@ const PhoneLogin = ({
         <div className="phone-page-container">
           <img src={image} alt="Background" className="background-image" />
           <div>
-            <PhoneMenuBar />
+            <MenuBar />
           </div>
           <h1>Dopamine Dares</h1>
           <div className="phone-login-container">

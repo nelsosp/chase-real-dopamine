@@ -1,6 +1,6 @@
 import video from "../assets/Login.mp4";
+import MenuBar from "./MenuBar";
 import "./WebLogin.css";
-import WebMenuBar from "./WebMenuBar";
 
 const WebLogin = ({
   username,
@@ -31,7 +31,7 @@ const WebLogin = ({
             autoPlay
           ></video>
           <div>
-            <WebMenuBar />
+            <MenuBar />
           </div>
           <h1>Dopamine Dares</h1>
           <div className="web-login-container">

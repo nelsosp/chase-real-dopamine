@@ -1,9 +1,9 @@
 import React from "react";
-import WebMenuBar from "./WebMenuBar";
+import MenuBar from "./MenuBar";
 const ComponentMaker = () => {
   return (
     <div>
-      <WebMenuBar />
+      <MenuBar />
     </div>
   );
 };
