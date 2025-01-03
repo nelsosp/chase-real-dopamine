@@ -25,8 +25,9 @@ const corsOptions = {
       callback(new Error("Not allowed by CORS")); // Reject the request
     }
   },
-  methods: "GET, POST",
-  allowedHeaders: "Content-Type",
+  methods: "GET, POST, OPTIONS", // Include OPTIONS for preflight
+  allowedHeaders: "Content-Type, Authorization", // Allow headers used in the request
+  credentials: true, // Allow credentials if needed (for cookies, etc.)
 };
 
 app.use(cors(corsOptions)); // Apply CORS configuration to the app
