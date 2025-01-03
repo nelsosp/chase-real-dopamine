@@ -1,9 +1,9 @@
 import React from "react";
-import MenuBar from "./MenuBar";
+import UsernameBar from "./UsernameBar";
 const ComponentMaker = () => {
   return (
     <div>
-      <MenuBar />
+      <UsernameBar />
     </div>
   );
 };
