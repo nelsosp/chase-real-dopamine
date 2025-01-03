@@ -11,25 +11,12 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-// Dynamically configure CORS based on the environment
 const corsOptions = {
-  origin: (origin, callback) => {
-    // Allow localhost and the production frontend URL
-    if (
-      origin === "http://localhost:3000" ||
-      origin ===
-        "https://chase-real-dopamine-frontend-1047292940162.us-central1.run.app"
-    ) {
-      callback(null, true); // Allow the request
-    } else {
-      callback(new Error("Not allowed by CORS")); // Reject the request
-    }
-  },
-  methods: "GET, POST, OPTIONS", // Include OPTIONS for preflight
-  allowedHeaders: "Content-Type, Authorization", // Allow headers used in the request
-  credentials: true, // Allow credentials if needed (for cookies, etc.)
+  origin:
+    "https://chase-real-dopamine-frontend-1047292940162.us-central1.run.app", // Only allow requests from this frontend URL
+  methods: "GET, POST",
+  allowedHeaders: "Content-Type",
 };
-
 app.use(cors(corsOptions)); // Apply CORS configuration to the app
 app.use(express.json()); // To parse JSON bodies
 
