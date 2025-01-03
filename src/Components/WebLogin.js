@@ -31,13 +31,11 @@ const WebLogin = ({
           ></video>
           <h1>Dopamine Dares</h1>
           <div className="web-login-container">
-            <h2>Login</h2>
             {error && <div className="error">{error}</div>}
             {successMessage && <div className="success">{successMessage}</div>}
-
             <div>
-              <label>
-                Username:
+              <label className="web-input-fields">
+                USERNAME
                 <input
                   type="text"
                   value={username}
@@ -45,12 +43,28 @@ const WebLogin = ({
                   required
                 />
               </label>
+              {/* this is for future implementation of taking emails in */}
+              <label className="web-input-fields">
+                EMAIL
+                <input type="text" />
+              </label>
+              <a href="/forgot-password" className="web-forgot-password-link">
+                forgot username?
+              </a>
             </div>
-            <button type="button" onClick={handleLogin}>
-              Login
+            <button
+              className="web-login-button"
+              type="button"
+              onClick={handleLogin}
+            >
+              LOG IN
             </button>
-            <button type="button" onClick={handleCreateUser}>
-              Create User
+            <button
+              className="web-create-user-button"
+              type="button"
+              onClick={handleCreateUser}
+            >
+              CREATE USER
             </button>
           </div>
         </div>
