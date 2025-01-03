@@ -3,11 +3,11 @@
   position: fixed;
   top: 20px;
   left: 20px;
-  width: 15px;
-  height: 15px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background-color: transparent;
-  border: 3px solid #f9c21b;
+  border: 7px solid #f9c21b;
   box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
   z-index: 9999;
   cursor: pointer;
