@@ -1,0 +1,50 @@
+/* PhoneHeader.css */
+.header {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  color: white;
+  z-index: 1000;
+}
+
+.user-logged-in {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.username {
+  margin-right: 10px;
+  cursor: pointer;
+  padding-bottom: 5px;
+  color: #f9c21b;
+  font-size: 18px;
+  display: block;
+  font-weight: 600;
+}
+
+.logout-button {
+  background-color: #f4b400;
+  border: none;
+  padding: 5px 5px;
+  cursor: pointer;
+  display: block;
+  margin-top: 5px;
+}
+
+.logout-button:hover {
+  background-color: #d49b00;
+}
+
+.sign-in-button {
+  background-color: #f9c21b;
+  color: white;
+  padding: 5px 5px;
+  cursor: pointer;
+  margin-top: 0px;
+}
+
+.sign-in-button:hover {
+  background-color: #45a049;
+}

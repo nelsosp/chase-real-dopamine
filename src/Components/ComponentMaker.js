@@ -1,10 +1,10 @@
 import React from "react";
-import PhoneMenuBar from "./PhoneMenuBar";
+import PhoneHeader from "./PhoneHeader";
 
 const ComponentMaker = () => {
   return (
     <div>
-      <PhoneMenuBar />
+      <PhoneHeader />
     </div>
   );
 };

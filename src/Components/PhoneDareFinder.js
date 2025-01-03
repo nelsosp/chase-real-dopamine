@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import image from "../assets/PhoneDareFinder.jpg";
 import DareCompletion from "./DareCompletion";
 import "./PhoneDareFinder.css";
+import PhoneHeader from "./PhoneHeader";
 import PhoneMenuBar from "./PhoneMenuBar";
 
 const PhoneDareFinder = ({ dare, error, fetchDare, username }) => {
@@ -17,6 +18,9 @@ const PhoneDareFinder = ({ dare, error, fetchDare, username }) => {
 
   return (
     <div className="phone-dare-container">
+      <div>
+        <PhoneHeader />
+      </div>
       <div>
         <PhoneMenuBar />
       </div>

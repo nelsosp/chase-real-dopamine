@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./PhoneMenuBar.css";
 
 const PhoneMenuBar = () => {
@@ -39,13 +40,13 @@ const PhoneMenuBar = () => {
         <div className={`menu ${menuOpen ? "menu-open" : ""}`}>
           <ul>
             <li>
-              <a href="#home">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <a href="#signup">Sign Up/Log In</a>
             </li>
             <li>
-              <a href="#dares">Dares</a>
+              <Link to="/dare-finder">Dares</Link>
             </li>
             <li>
               <a href="#about">About Us</a>
