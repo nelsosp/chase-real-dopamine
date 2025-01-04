@@ -79,20 +79,6 @@
   margin-bottom: 10px;
 }
 
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 10px 0;
-  width: 100%;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
 input[type="text"] {
   width: 90%;
   padding: 10px;
@@ -142,7 +128,19 @@ label.web-input-fields input {
   cursor: pointer;
   height: 50px;
   border: 1px solid #f9c21b;
+  margin: 10px 0;
+  width: 100%;
 }
+
+.web-login-button:hover {
+  background-color: #f9c21b;
+  background: transparent;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
 .web-create-user-button {
   padding: 10px;
   background-color: #f9c21b;
@@ -151,4 +149,14 @@ label.web-input-fields input {
   border-radius: 25px;
   cursor: pointer;
   height: 50px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.web-create-user-button:hover {
+  background-color: #f9c21b;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
