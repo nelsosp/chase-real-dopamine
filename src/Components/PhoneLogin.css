@@ -124,7 +124,19 @@ label.phone-input-fields input {
   cursor: pointer;
   height: 50px;
   border: 1px solid #f9c21b;
+  width: 100%;
+  margin: 10px 0;
 }
+
+.phone-login-button:hover {
+  background-color: #f9c21b;
+  background: transparent;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
 .phone-create-user-button {
   padding: 10px;
   background-color: #f9c21b;
@@ -133,8 +145,14 @@ label.phone-input-fields input {
   border-radius: 25px;
   cursor: pointer;
   height: 50px;
+  width: 100%;
+  margin: 10px 0;
 }
 
-button:hover {
-  background-color: #0056b3;
+.phone-create-user-button:hover {
+  background-color: #f9c21b;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
