@@ -17,7 +17,7 @@ const UsernameBar = () => {
   }, []);
 
   const handleSignIn = () => {
-    navigate("/"); // Navigate to the login page
+    navigate("/login"); // Navigate to the login page
   };
 
   const handleLogout = () => {
@@ -42,13 +42,13 @@ const UsernameBar = () => {
             </span>
             {showLogout && (
               <button onClick={handleLogout} className="logout-button">
-                Logout
+                LOGOUT
               </button>
             )}
           </div>
         ) : (
           <button className="sign-in-button" onClick={handleSignIn}>
-            Sign In
+            SIGN IN
           </button>
         )}
       </div>
