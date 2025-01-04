@@ -14,14 +14,6 @@
   align-items: flex-end;
 }
 
-.logout-button:hover {
-  background-color: #d49b00;
-}
-
-.sign-in-button:hover {
-  background-color: #45a049;
-}
-
 @media (max-width: 480px) {
   .username {
     margin-right: 10px;
@@ -39,6 +31,8 @@
     cursor: pointer;
     display: block;
     margin-top: 5px;
+    border-radius: 5px;
+    color: white;
   }
   .sign-in-button {
     background-color: #f9c21b;
@@ -46,6 +40,8 @@
     padding: 5px 5px;
     cursor: pointer;
     margin-top: 0px;
+    border-radius: 5px;
+    border: none;
   }
 }
 
@@ -67,6 +63,8 @@
     cursor: pointer;
     display: block;
     margin-top: 5px;
+    border-radius: 5px;
+    color: white;
   }
   .sign-in-button {
     background-color: #f9c21b;
@@ -74,5 +72,7 @@
     padding: 10px 10px;
     cursor: pointer;
     margin-top: 0px;
+    border-radius: 5px;
+    border: none;
   }
 }

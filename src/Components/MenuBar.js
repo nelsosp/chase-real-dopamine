@@ -6,6 +6,9 @@ const MenuBar = () => {
   // State to control the visibility of the menu
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Checking if user is logged in by checking token, related to Dare route
+  const isLoggedIn = localStorage.getItem("token") !== null;
+
   // Function to toggle the menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -46,7 +49,11 @@ const MenuBar = () => {
               <a href="#signup">Sign Up/Log In</a>
             </li>
             <li>
-              <Link to="/dare-finder">Dares</Link>
+              {isLoggedIn ? (
+                <Link to="/dare-finder">Dares</Link>
+              ) : (
+                <span></span>
+              )}
             </li>
             <li>
               <a href="#about">About Us</a>
