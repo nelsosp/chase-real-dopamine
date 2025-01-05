@@ -56,7 +56,7 @@ const MenuBar = () => {
               )}
             </li>
             <li>
-              <a href="#about">About Us</a>
+              <a href="/about-us">About Us</a>
             </li>
           </ul>
         </div>
