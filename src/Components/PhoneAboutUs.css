@@ -1,0 +1,49 @@
+.phone-about-us-title {
+  color: #f9c21b;
+  font-size: 1.5rem;
+  font-weight: 600;
+  z-index: 10;
+  white-space: nowrap;
+  position: relative;
+  top: 15px;
+  right: 10px;
+}
+
+.phone-about-us-message {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -130%);
+  width: 80%;
+  height: 25%;
+  padding: 10px;
+  font-size: 16px;
+  text-align: left;
+  color: white;
+  border-radius: 15px;
+}
+
+.background-image-phone-personal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-190%, 40%);
+  width: 22%;
+  height: 15%;
+  border-radius: 15px;
+}
+
+.phone-personal-text-field {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, 100%);
+  padding: 10px;
+  font-size: 8px;
+  width: 55%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  text-align: left;
+  border-radius: 15px;
+}
