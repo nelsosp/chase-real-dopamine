@@ -1,24 +1,32 @@
-import React, { useEffect, useState } from "react";
-import Slider from "react-slick"; // Importing react-slick
-import "slick-carousel/slick/slick-theme.css"; // Slick Theme CSS
-import "slick-carousel/slick/slick.css"; // Slick CSS
+import React, { useEffect, useRef, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import backgroundAfternoon from "../assets/Afternoon.jpg";
+import image5 from "../assets/FutureLogin.jpg";
+import backgroundMorning from "../assets/Morning.jpg";
+import backgroundNight from "../assets/Night.jpg";
+import image6 from "../assets/Personal.jpg";
+import image4 from "../assets/PhoneAboutUs.jpg";
 import image3 from "../assets/PhoneLander.jpg";
-import image1 from "../assets/PhoneLogin.jpg"; // Import image
+import image1 from "../assets/PhoneLogin.jpg";
 import image2 from "../assets/PhoneLogin2.jpg";
 import "./DareCarousel.css";
 
 const DareCarousel = () => {
   const [timeOfDay, setTimeOfDay] = useState("");
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // For mobile detection
+  const [isInteracted, setIsInteracted] = useState(false); // Track interaction state
+  const sliderRef = useRef(null);
 
-  // Categories available for selection
   const categories = [
     { title: "Cozy Corner", imageUrl: image1 },
-    { title: "Fresh Air", imageUrl: image2 },
-    { title: "Creative Spark", imageUrl: image3 },
+    { title: "Creative Spark", imageUrl: image2 },
+    { title: "Fresh Air", imageUrl: image3 },
+    { title: "Social Butterfly", imageUrl: image4 },
+    { title: "Sweat It Out", imageUrl: image5 },
+    { title: "Wildcard", imageUrl: image6 },
   ];
 
-  // Detect time of day and set the header accordingly
   useEffect(() => {
     const hours = new Date().getHours();
     if (hours >= 6 && hours < 12) {
@@ -28,42 +36,85 @@ const DareCarousel = () => {
     } else {
       setTimeOfDay("Night");
     }
-  }, []);
 
-  // Handle resizing for mobile detection
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 431); // Adjust breakpoint for mobile
+    // Add touchstart event listener to pause and resume autoplay
+    const sliderContainer = document.querySelector(".cc-slider-container");
+    if (sliderContainer) {
+      sliderContainer.addEventListener("touchstart", handleTouchStart);
+    }
+
+    // Cleanup event listener on unmount
+    return () => {
+      if (sliderContainer) {
+        sliderContainer.removeEventListener("touchstart", handleTouchStart);
+      }
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Settings for react-slick carousel (horizontal, swipeable)
+  // This function will pause autoplay and set a delay before resuming autoplay
+  const handleTouchStart = () => {
+    setIsInteracted(true);
+    if (sliderRef.current) {
+      sliderRef.current.slickPause();
+
+      // Delay before autoplay resumes after interaction
+      setTimeout(() => {
+        setIsInteracted(false);
+        if (sliderRef.current) {
+          sliderRef.current.slickPlay();
+        }
+      }, 5000);
+    }
+  };
+
+  // Dynamically set the background image based on the time of day
+  const getBackgroundImage = () => {
+    switch (timeOfDay) {
+      case "Morning":
+        return backgroundMorning;
+      case "Afternoon":
+        return backgroundAfternoon;
+      case "Night":
+        return backgroundNight;
+      default:
+        return backgroundMorning;
+    }
+  };
+
   const sliderSettings = {
-    dots: true,
     infinite: true,
-    speed: 5000,
-    slidesToShow: isMobile ? 1 : 3, // 1 slide for mobile, 3 slides for desktop
-    slidesToScroll: 1,
+    speed: 500,
     arrows: false,
-    autoplay: true,
-    autoplaySpeed: 0, // Set autoplay to no delay
+    autoplay: !isInteracted,
+    autoplaySpeed: 3000,
+    draggable: true,
+    swipeToSlide: true,
+    touchMove: true,
+    touchThreshold: 1,
     cssEase: "linear",
     pauseOnHover: true,
     pauseOnFocus: true,
-    draggable: true, // Enable dragging
-    swipeToSlide: true, // Enable swipe to slide
-    touchMove: true, // Enable touch move
-    touchThreshold: 5,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    centerMode: false,
+    variableWidth: false,
   };
 
   return (
-    <div className="main-page" aria-live="polite">
+    <div
+      className="main-page cc-slider-container"
+      style={{
+        backgroundImage: `url(${getBackgroundImage()})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        color: "white",
+      }}
+      aria-live="polite"
+    >
       <h1>{timeOfDay} Dares</h1>
 
-      {/* Carousel */}
-      <Slider {...sliderSettings}>
+      <Slider {...sliderSettings} ref={sliderRef}>
         {categories.map((category, index) => (
           <div key={index} className="carousel-slide">
             <div className="category-box">
