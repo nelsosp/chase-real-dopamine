@@ -1,12 +1,14 @@
 /* General styles for the page */
 .main-page {
-  text-align: center;
   padding: 20px;
+  text-align: center;
 }
 
 .carousel-slide {
-  pointer-events: all; /* Make sure that mouse events are enabled */
-  touch-action: pan-y; /* Allow vertical swipe */
+  pointer-events: all;
+  touch-action: pan-y;
+  transform: translate(-50%, 20%);
+  height: 100vh;
 }
 
 /* Container that holds the title and image */
@@ -21,7 +23,7 @@
   width: 80%;
   position: relative;
   margin: 0 auto;
-  user-select: none; /* Prevent text selection while dragging */
+  user-select: none;
   touch-action: pan-y;
 }
 
@@ -30,12 +32,12 @@
   font-size: 1.5em;
   margin-bottom: 15px;
   text-transform: capitalize;
-  position: absolute;
-  z-index: 1;
   color: white;
-  bottom: 10px;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 /* Image styling */
@@ -51,7 +53,7 @@
 @media (max-width: 480px) {
   .category-box {
     height: 30vh;
-    width: 90%;
+    width: 80%;
   }
 
   .category-box h2 {
@@ -66,11 +68,15 @@
 /* For larger screens (min-width: 480px) */
 @media (min-width: 480px) {
   .category-box {
-    height: 25vh;
-    width: 50%;
+    height: 50vh;
+    width: 90%;
   }
 
   .category-box h2 {
     font-size: 1.8em;
+  }
+
+  .category-box img {
+    height: 100%;
   }
 }
