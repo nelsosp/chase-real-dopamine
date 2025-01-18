@@ -1,9 +1,9 @@
 import React from "react";
-import UsernameBar from "./UsernameBar";
+import DareCarousel from "./DareCarousel";
 const ComponentMaker = () => {
   return (
     <div>
-      <UsernameBar />
+      <DareCarousel />
     </div>
   );
 };
