@@ -1,0 +1,76 @@
+/* General styles for the page */
+.main-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.carousel-slide {
+  pointer-events: all; /* Make sure that mouse events are enabled */
+  touch-action: pan-y; /* Allow vertical swipe */
+}
+
+/* Container that holds the title and image */
+.category-box {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow: hidden;
+  height: 20vh;
+  width: 80%;
+  position: relative;
+  margin: 0 auto;
+  user-select: none; /* Prevent text selection while dragging */
+  touch-action: pan-y;
+}
+
+/* Title of the category */
+.category-box h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+  position: absolute;
+  z-index: 1;
+  color: white;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Image styling */
+.category-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-position: center;
+  display: block;
+}
+
+/* For mobile screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .category-box {
+    height: 30vh;
+    width: 90%;
+  }
+
+  .category-box h2 {
+    font-size: 1.2em;
+  }
+
+  .category-box img {
+    height: 100%;
+  }
+}
+
+/* For larger screens (min-width: 480px) */
+@media (min-width: 480px) {
+  .category-box {
+    height: 25vh;
+    width: 50%;
+  }
+
+  .category-box h2 {
+    font-size: 1.8em;
+  }
+}
