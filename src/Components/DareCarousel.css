@@ -1,7 +1,31 @@
 /* General styles for the page */
 .main-page {
-  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.main-page h1 {
+  margin: 0;
+  font-size: 3em;
   text-align: center;
+  color: #f9c21b;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
+.main-page p {
+  /* padding: 0 20px; */
+  text-align: center;
+  color: #f9c21b;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 100%;
+  top: 150px;
 }
 
 .carousel-slide {
@@ -16,10 +40,7 @@
 }
 /********  clips top of border since its too small. fix *********/
 .category-box {
-  /* background-color: #f4f4f4; */
   border-radius: 8px;
-  padding: 10px;
-  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
   text-align: center;
   overflow: hidden;
   height: 40vh;
@@ -27,6 +48,7 @@
   position: relative;
   margin: 0 auto;
   user-select: none;
+  top: 40%;
 }
 
 .category-box h2 {
@@ -35,9 +57,10 @@
   text-transform: capitalize;
   color: white;
   position: absolute;
+  width: 100%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -100%);
 }
 
 .category-box img {
@@ -63,7 +86,7 @@
 }
 
 /***** Fix overlay fade in *******/
-.overlay {
+.overlay2 {
   position: fixed;
   top: 0;
   left: 0;
@@ -73,17 +96,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 9999;
   pointer-events: none;
   transition: opacity 5s ease;
 }
 
-.overlay.show {
+.overlay2.show {
   opacity: 1;
   pointer-events: all;
 }
 
-.overlay .complete-btn {
+.overlay2 .complete-btn {
   padding: 10px 20px;
   background-color: #f9c21b;
   color: white;
@@ -96,7 +119,7 @@
   width: 50%;
 }
 
-.overlay .chicken-out-btn {
+.overlay2 .chicken-out-btn {
   padding: 10px 20px;
   background-color: red;
   color: white;
@@ -124,7 +147,7 @@
     height: 100%;
   }
 
-  .overlay-content {
+  .overlay2-content {
     width: 90%;
     text-align: center;
     font-size: 0.7em;
@@ -157,7 +180,7 @@
     height: 100%;
   }
 
-  .overlay-content {
+  .overlay2-content {
     text-align: center;
     width: 90%;
     font-size: 1em;
