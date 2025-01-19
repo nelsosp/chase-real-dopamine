@@ -12,6 +12,8 @@ import image3 from "../assets/PhoneLander.jpg";
 import image1 from "../assets/PhoneLogin.jpg";
 import image2 from "../assets/PhoneLogin2.jpg";
 import "./DareCarousel.css";
+import MenuBar from "./MenuBar";
+import UsernameBar from "./UsernameBar";
 
 const DareCarousel = () => {
   const [timeOfDay, setTimeOfDay] = useState("");
@@ -35,7 +37,7 @@ const DareCarousel = () => {
     const hours = new Date().getHours();
     if (hours >= 6 && hours < 12) {
       setTimeOfDay("Morning");
-    } else if (hours >= 12 && hours < 18) {
+    } else if (hours >= 12 && hours < 19) {
       setTimeOfDay("Afternoon");
     } else {
       setTimeOfDay("Night");
@@ -165,8 +167,14 @@ const DareCarousel = () => {
         color: "white",
       }}
     >
+      <MenuBar />
+      <UsernameBar />
       <h1>{timeOfDay} Dares</h1>
-
+      <p>
+        Dares that will jumpstart you day the moment you wake up or decide to go
+        to sleep. Explore the many different categories that Dopamine Dares
+        offers!
+      </p>
       <Slider {...sliderSettings} ref={sliderRef}>
         {categories.map((category, index) => (
           <div
@@ -194,10 +202,13 @@ const DareCarousel = () => {
 
       {isOverlayVisible && (
         <div
-          className={`overlay ${isOverlayVisible ? "show" : ""}`}
+          className={`overlay2 ${isOverlayVisible ? "show" : ""}`}
           onClick={closeOverlay}
         >
-          <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="overlay2-content"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h2>{dare ? dare : "Loading dare..."}</h2>
             <button className="complete-btn" onClick={closeOverlay}>
               Complete
