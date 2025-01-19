@@ -17,6 +17,7 @@ import UsernameBar from "./UsernameBar";
 
 const DareCarousel = () => {
   const [timeOfDay, setTimeOfDay] = useState("");
+  const [timeOfDayDescription, settimeOfDayDescription] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [dare, setDare] = useState(null);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
@@ -37,10 +38,19 @@ const DareCarousel = () => {
     const hours = new Date().getHours();
     if (hours >= 6 && hours < 12) {
       setTimeOfDay("Morning");
+      settimeOfDayDescription(
+        "The morning sun rises with a quiet determination, casting a warm glow that inspires a fresh start and endless possibilities ahead."
+      );
     } else if (hours >= 12 && hours < 19) {
       setTimeOfDay("Afternoon");
+      settimeOfDayDescription(
+        "The afternoon hums with a vibrant energy, where the day's momentum propels you forward, fueling both focus and action."
+      );
     } else {
       setTimeOfDay("Night");
+      settimeOfDayDescription(
+        "As the night falls, a peaceful stillness settles in, offering a moment of reflection and calm before recharging for tomorrow's journey."
+      );
     }
 
     const sliderContainer = document.querySelector(".cc-slider-container");
@@ -82,9 +92,6 @@ const DareCarousel = () => {
     const backendUrl = getBackendUrl(); // Get the correct backend URL
     const formattedCategory = formatCategory(category);
     const url = `${backendUrl}/dare/${timeOfDay}/${formattedCategory}`;
-
-    console.log("Request URL:", url); // Log the URL to the console
-    console.log("Time of day:", timeOfDay); // Log the time of day
 
     try {
       const response = await fetch(url);
@@ -156,6 +163,22 @@ const DareCarousel = () => {
     variableWidth: false,
   };
 
+  const currentTime = new Date();
+  const hours = currentTime.getHours();
+  const minutes = currentTime.getMinutes();
+
+  // Format hours in 12-hour format
+  const formattedHour = hours % 12 === 0 ? 12 : hours % 12;
+
+  // Format minutes to ensure two digits (e.g., "05" instead of "5")
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  // Determine AM or PM
+  const amPm = hours >= 12 ? "PM" : "AM";
+
+  // Combine everything into a string
+  const formattedTime = `${formattedHour}:${formattedMinutes} ${amPm}`;
+
   return (
     <div
       className="main-page cc-slider-container"
@@ -169,12 +192,9 @@ const DareCarousel = () => {
     >
       <MenuBar />
       <UsernameBar />
+      <p2>{`${formattedTime}`}</p2>
       <h1>{timeOfDay} Dares</h1>
-      <p>
-        Dares that will jumpstart you day the moment you wake up or decide to go
-        to sleep. Explore the many different categories that Dopamine Dares
-        offers!
-      </p>
+      <p>{timeOfDayDescription}</p>
       <Slider {...sliderSettings} ref={sliderRef}>
         {categories.map((category, index) => (
           <div
