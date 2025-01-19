@@ -23,6 +23,7 @@
     font-size: 18px;
     display: block;
     font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   }
   .logout-button {
     background-color: #f4b400;
@@ -30,9 +31,11 @@
     padding: 5px 5px;
     cursor: pointer;
     display: block;
-    margin-top: 5px;
     border-radius: 5px;
     color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    margin-right: -8px;
   }
   .sign-in-button {
     background-color: transparent;
@@ -43,6 +46,7 @@
     margin-top: 0px;
     border-radius: 5px;
     border: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   }
 }
 
@@ -56,6 +60,7 @@
     font-size: 25px;
     display: block;
     font-weight: 600;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
   }
   .logout-button {
     background-color: #f9c21b;
@@ -63,9 +68,11 @@
     padding: 10px 10px;
     cursor: pointer;
     display: block;
-    margin-top: 5px;
     border-radius: 5px;
     color: white;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    margin-right: -8px;
   }
   .sign-in-button {
     background-color: transparent;
@@ -77,5 +84,6 @@
     border-radius: 5px;
     border: none;
     font-size: 1rem;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
   }
 }

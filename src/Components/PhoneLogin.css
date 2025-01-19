@@ -79,12 +79,14 @@ body.fade-to-black {
 .phone-page-container h1 {
   color: #f9c21b;
   font-size: 1.5em;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
 .phone-input-fields {
   color: #f9c21b;
   text-align: left;
   display: block;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
 label.phone-input-fields input {
@@ -103,6 +105,7 @@ label.phone-input-fields input {
   text-align: right;
   display: block;
   padding: 5px;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
 .fade-out {

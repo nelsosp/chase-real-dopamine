@@ -3,7 +3,7 @@ import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AboutUs from "./Components/AboutUs";
 import ComponentMaker from "./Components/ComponentMaker";
-import DareFinder from "./Components/DareFinder";
+import DareCarousel from "./Components/DareCarousel";
 import Lander from "./Components/Lander";
 import Login from "./Components/Login";
 
@@ -13,7 +13,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Lander />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dare-finder" element={<DareFinder />} />
+        <Route path="/dare-finder" element={<DareCarousel />} />
         <Route path="/component-maker" element={<ComponentMaker />} />
         <Route path="/about-us" element={<AboutUs />} />
       </Routes>

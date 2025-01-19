@@ -17,25 +17,37 @@ const corsOptions = {
   methods: "GET, POST",
   allowedHeaders: "Content-Type",
 };
-app.use(cors(corsOptions)); // Apply CORS configuration to the app
+app.use(cors(corsOptions));
 app.use(express.json()); // To parse JSON bodies
 
-// Existing get request for dares
-app.get("/dare", async (req, res) => {
-  try {
-    const daresRef = db.collection("dares");
-    const snapshot = await daresRef.get();
+app.get("/dare/:timeOfDay/:category", async (req, res) => {
+  const { timeOfDay, category } = req.params;
 
-    if (snapshot.empty) {
-      return res.status(404).json({ error: "No dares available" });
+  try {
+    // Fetch the 'timeOfDay' document (Morning, Afternoon, or Night)
+    const daresRef = db.collection("Dares").doc(timeOfDay);
+    const doc = await daresRef.get();
+
+    if (!doc.exists) {
+      return res
+        .status(404)
+        .json({ error: `No dares available for ${timeOfDay}` });
     }
 
-    const dares = snapshot.docs.map((doc) => doc.data());
-    const randomDare = dares[Math.floor(Math.random() * dares.length)];
+    // Get the dares data from the specified category (CozyCorner, FreshAir, etc.)
+    const dares = doc.data()[category];
 
-    res.json({ dare: randomDare.text });
+    if (!dares || dares.length === 0) {
+      return res
+        .status(404)
+        .json({ error: `No dares available for ${category} in ${timeOfDay}` });
+    }
+
+    // Return a random dare from the array of dares
+    const randomDare = dares[Math.floor(Math.random() * dares.length)];
+    res.json(randomDare);
   } catch (error) {
-    console.error("Error fetching dares:", error);
+    console.error("Error fetching dare:", error);
     res.status(500).json({ error: "Failed to fetch dare" });
   }
 });

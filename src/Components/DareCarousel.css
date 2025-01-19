@@ -7,25 +7,41 @@
 
 .main-page h1 {
   margin: 0;
-  font-size: 3em;
+  font-size: 2.8em;
   text-align: center;
-  color: #f9c21b;
+  color: white;
   position: absolute;
   top: 100px;
   left: 50%;
   width: 100%;
   transform: translateX(-50%);
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
 }
 
 .main-page p {
+  text-align: center;
+  color: white;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 90%;
+  top: 150px;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+  font-weight: 600;
+}
+
+.main-page p2 {
   /* padding: 0 20px; */
   text-align: center;
-  color: #f9c21b;
+  color: white;
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
   width: 100%;
-  top: 150px;
+  top: 15px;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
 .carousel-slide {
@@ -40,15 +56,16 @@
 }
 /********  clips top of border since its too small. fix *********/
 .category-box {
-  border-radius: 8px;
+  border-radius: 20px;
   text-align: center;
   overflow: hidden;
-  height: 40vh;
+  /* height: auto; */
   width: 80%;
   position: relative;
   margin: 0 auto;
   user-select: none;
   top: 40%;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 1);
 }
 
 .category-box h2 {
@@ -61,14 +78,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -100%);
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
 .category-box img {
   width: 100%;
-  height: auto;
+  height: 100%; /* Keep it consistent for both small and large screens */
+  object-fit: cover; /* Maintain aspect ratio while covering the container */
   border-radius: 15px;
-  object-position: center;
-  display: block;
 }
 
 /* Get Dare button */
@@ -83,6 +100,7 @@
   border-radius: 25px;
   cursor: pointer;
   box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
 /***** Fix overlay fade in *******/
@@ -117,6 +135,7 @@
   box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
   height: 50px;
   width: 50%;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
 .overlay2 .chicken-out-btn {
@@ -130,6 +149,7 @@
   box-shadow: 0 0 20px rgba(255, 80, 80, 0.8);
   height: 50px;
   width: 50%;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
 /* For mobile screens (max-width: 480px) */
@@ -148,6 +168,7 @@
   }
 
   .overlay2-content {
+    height: 40vh;
     width: 90%;
     text-align: center;
     font-size: 0.7em;
@@ -169,7 +190,7 @@
 @media (min-width: 480px) {
   .category-box {
     height: 50vh;
-    width: 90%;
+    width: 80%;
   }
 
   .category-box h2 {

@@ -46,7 +46,7 @@ const MenuBar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="#signup">Sign Up/Log In</a>
+              <a href="/login">Sign Up/Log In</a>
             </li>
             <li>
               {isLoggedIn ? (
