@@ -101,10 +101,16 @@ app.post("/api/auth", async (req, res) => {
 // Endpoint to handle incrementing totalCompleted count collection/document
 app.post("/api/complete-dare", async (req, res) => {
   console.log("Request Body:", req.body);
-  const { username } = req.body;
+  const { username, action } = req.body;
 
   if (!username || username.trim() === "") {
     return res.status(400).json({ message: "Username cannot be empty" });
+  }
+
+  if (!action || (action !== "complete" && action !== "fail")) {
+    return res
+      .status(400)
+      .json({ message: "Invalid action. Must be 'complete' or 'fail'" });
   }
 
   try {
@@ -112,22 +118,33 @@ app.post("/api/complete-dare", async (req, res) => {
     const userProgressDoc = await userProgressRef.get();
 
     if (userProgressDoc.exists) {
-      // Increment the totalCompleted field
       const currentTotal = userProgressDoc.data().totalCompleted;
-      await userProgressRef.update({
-        totalCompleted: admin.firestore.FieldValue.increment(1),
-      });
 
-      // Check if the user has completed 5 dares
-      if (currentTotal + 1 === 5) {
-        return res.json({
-          message: "Congratulations! You’ve completed 5 dares!",
-          completedFive: true, // Flag to indicate completion of 5 dares
+      if (action === "complete") {
+        await userProgressRef.update({
+          totalCompleted: admin.firestore.FieldValue.increment(1),
         });
-      } else {
+
+        if (currentTotal + 1 === 5) {
+          return res.json({
+            message: "Congratulations! You’ve completed 5 dares!",
+            completedFive: true, // Flag to indicate completion of 5 dares
+          });
+        } else {
+          return res.json({
+            message: "Dare completion recorded successfully!",
+            completedFive: false,
+          });
+        }
+      } else if (action === "fail") {
+        const newTotal = Math.max(0, currentTotal - 1); // Ensure it doesn't go below 0
+        await userProgressRef.update({
+          totalCompleted: newTotal,
+        });
+
         return res.json({
-          message: "Dare completion recorded successfully!",
-          completedFive: false,
+          message: "Dare failure recorded successfully!",
+          totalCompleted: newTotal,
         });
       }
     } else {
