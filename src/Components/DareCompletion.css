@@ -40,3 +40,31 @@
   margin: 0;
   font-size: 1.2em; /* Example font size */
 }
+
+.complete-btn {
+  padding: 10px 20px;
+  background-color: #f9c21b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 100px;
+  box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
+  height: 50px;
+  width: 100%;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+}
+
+.chicken-out-btn {
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 20px rgba(255, 80, 80, 0.8);
+  height: 50px;
+  width: 100%;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+}

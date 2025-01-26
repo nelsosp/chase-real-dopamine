@@ -11,18 +11,17 @@ const DareCompletion = ({ username }) => {
     if (window.location.hostname === "localhost") {
       return "http://localhost:5001"; // For local development
     } else {
-      // Use the Cloud Run URL for the backend
       return "https://chase-real-dopamine-backend-1047292940162.us-central1.run.app";
     }
   };
 
-  const completeDare = async () => {
-    console.log("Username being sent:", username); // Log the username
+  const handleDareAction = async (action) => {
+    console.log(`Action being sent: ${action}, Username: ${username}`);
     setLoading(true);
     setMessage("");
     setError("");
 
-    const backendUrl = getBackendUrl(); // Get the correct backend URL
+    const backendUrl = getBackendUrl();
 
     try {
       const response = await fetch(`${backendUrl}/api/complete-dare`, {
@@ -30,7 +29,7 @@ const DareCompletion = ({ username }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username }), // Send the username in the request body
+        body: JSON.stringify({ username, action }), // Send the action (complete or fail)
       });
 
       const data = await response.json();
@@ -41,7 +40,7 @@ const DareCompletion = ({ username }) => {
         setMessage(data.message);
       }
     } catch (err) {
-      setError("Error completing dare: " + err.message);
+      setError("Error processing dare action: " + err.message);
     } finally {
       setLoading(false);
     }
@@ -59,9 +58,22 @@ const DareCompletion = ({ username }) => {
 
   return (
     <div>
-      <button onClick={completeDare} disabled={loading}>
+      <button
+        className="complete-btn"
+        onClick={() => handleDareAction("complete")}
+        disabled={loading}
+      >
         {loading ? "Completing..." : "Complete Dare"}
       </button>
+
+      <button
+        className="chicken-out-btn"
+        onClick={() => handleDareAction("fail")}
+        disabled={loading}
+      >
+        {loading ? "Failing..." : "Fail Dare"}
+      </button>
+
       {message && (
         <div className={`message ${completedFive ? "fade-out" : "fade-in"}`}>
           <p style={{ color: completedFive ? "green" : "white" }}>{message}</p>
