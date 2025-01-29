@@ -5,6 +5,8 @@ import "./WebLogin.css";
 const WebLogin = ({
   username,
   setUsername,
+  email,
+  setEmail,
   handleLogin,
   handleCreateUser,
   error,
@@ -50,7 +52,12 @@ const WebLogin = ({
               {/* this is for future implementation of taking emails in */}
               <label className="web-input-fields">
                 EMAIL
-                <input type="text" />
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </label>
               <a href="/forgot-password" className="web-forgot-password-link">
                 forgot username?

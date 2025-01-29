@@ -5,6 +5,7 @@ import WebLogin from "./WebLogin";
 
 const Login = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -33,14 +34,19 @@ const Login = () => {
     setIsLoading(false);
 
     const backendUrl = getBackendUrl(); // Get the correct backend URL
-
+    const normalizedUsername = username.toLowerCase();
+    const normalizedEmail = email.toLowerCase();
     try {
       const response = await fetch(`${backendUrl}/api/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, action: "login" }),
+        body: JSON.stringify({
+          username: normalizedUsername,
+          email: normalizedEmail,
+          action: "login",
+        }),
       });
 
       if (!response.ok) {
@@ -50,10 +56,21 @@ const Login = () => {
 
       const data = await response.json();
       localStorage.setItem("token", data.token);
-      localStorage.setItem("username", username);
+      localStorage.setItem("username", normalizedUsername);
+      localStorage.setItem("email", normalizedEmail);
       setSuccessMessage("Login successful!");
       setIsLoading(true);
-      fadeToBlackAndDisplayMessages();
+
+      // Check if the user has already seen the hero message
+      const hasSeenHeroMessage = localStorage.getItem("hasSeenHeroMessage");
+
+      if (hasSeenHeroMessage === "true") {
+        // If the user has seen the hero message, skip the messages and go directly to the next page
+        navigate("/dare-finder", { state: { username: normalizedUsername } });
+      } else {
+        // If the user hasn't seen the hero message, show the messages
+        fadeToBlackAndDisplayMessages();
+      }
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
@@ -66,14 +83,19 @@ const Login = () => {
     setSuccessMessage("");
 
     const backendUrl = getBackendUrl(); // Get the correct backend URL
-
+    const normalizedUsername = username.toLowerCase();
+    const normalizedEmail = email.toLowerCase();
     try {
       const response = await fetch(`${backendUrl}/api/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, action: "create" }),
+        body: JSON.stringify({
+          username: normalizedUsername,
+          email: normalizedEmail,
+          action: "create",
+        }),
       });
 
       if (!response.ok) {
@@ -98,19 +120,26 @@ const Login = () => {
   const displayMessages = () => {
     let index = 0;
 
-    const showNextMessage = () => {
+    const showNextMessage = async () => {
       setIsFadingOut(false);
       setMessageIndex(index);
       index++;
 
       setTimeout(() => {
         setIsFadingOut(true);
-        setTimeout(() => {
+        setTimeout(async () => {
           setMessageIndex(-1);
           if (index < messages.length) {
             setTimeout(showNextMessage, 1000);
           } else {
-            navigate("/dare-finder", { state: { username } });
+            // Once all messages have been shown, set the localStorage flag
+            localStorage.setItem("hasSeenHeroMessage", "true");
+
+            // Navigate to the next page
+            const normalizedUsername = localStorage.getItem("username");
+            navigate("/dare-finder", {
+              state: { username: normalizedUsername },
+            });
             setTimeout(() => {
               document.body.classList.remove("fade-to-black");
             }, 100);
@@ -141,6 +170,7 @@ const Login = () => {
         <PhoneLogin
           username={username}
           setUsername={setUsername}
+          setEmail={setEmail}
           handleLogin={handleLogin}
           handleCreateUser={handleCreateUser}
           error={error}
@@ -154,6 +184,7 @@ const Login = () => {
         <WebLogin
           username={username}
           setUsername={setUsername}
+          setEmail={setEmail}
           handleLogin={handleLogin}
           handleCreateUser={handleCreateUser}
           error={error}

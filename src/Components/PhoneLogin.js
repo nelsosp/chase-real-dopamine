@@ -5,6 +5,8 @@ import "./PhoneLogin.css";
 const PhoneLogin = ({
   username,
   setUsername,
+  email,
+  setEmail,
   handleLogin,
   handleCreateUser,
   error,
@@ -44,7 +46,12 @@ const PhoneLogin = ({
               {/* this is for future implementation of taking emails in */}
               <label className="phone-input-fields">
                 EMAIL
-                <input type="text" />
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </label>
               <a href="/forgot-password" className="phone-forgot-password-link">
                 forgot username?
