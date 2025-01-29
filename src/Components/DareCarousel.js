@@ -3,14 +3,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import backgroundAfternoon from "../assets/Afternoon.jpg";
-import image5 from "../assets/FutureLogin.jpg";
+import image1 from "../assets/CozyCorner.jpg";
+import image2 from "../assets/CreativeSpark.jpg";
+import image3 from "../assets/FreshAir.jpg";
 import backgroundMorning from "../assets/Morning.jpg";
 import backgroundNight from "../assets/Night.jpg";
-import image6 from "../assets/Personal.jpg";
-import image4 from "../assets/PhoneAboutUs.jpg";
-import image3 from "../assets/PhoneLander.jpg";
-import image1 from "../assets/PhoneLogin.jpg";
-import image2 from "../assets/PhoneLogin2.jpg";
+import image4 from "../assets/SocialButterfly.jpg";
+import image5 from "../assets/SweatItOut.jpg";
+import image6 from "../assets/Wildcard.jpg";
 import "./DareCarousel.css";
 import DareCompletion from "./DareCompletion";
 import MenuBar from "./MenuBar";
@@ -18,9 +18,9 @@ import UsernameBar from "./UsernameBar";
 
 // Mapping timeOfDay to custom display names
 const timeOfDayNames = {
-  Morning: "Sunrise Serenity",
-  Afternoon: "Afternoon Energy",
-  Night: "Moonlit Calm",
+  Morning: "Rise & Shine",
+  Afternoon: "Afternoon Boost",
+  Night: "After Dark",
 };
 
 const DareCarousel = () => {
@@ -239,7 +239,7 @@ const DareCarousel = () => {
           transform: "translateX(-50%)",
           left: "50%",
           width: "100%",
-          top: "15px",
+          top: "-8px",
           fontSize: "1.5em", // Corrected camelCase
           fontWeight: 600,
           textShadow: "3px 3px 8px rgba(0, 0, 0, 1)", // Corrected camelCase

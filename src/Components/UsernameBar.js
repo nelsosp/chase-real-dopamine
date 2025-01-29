@@ -12,7 +12,7 @@ const UsernameBar = () => {
     const token = localStorage.getItem("token");
     if (token) {
       const storedUsername = localStorage.getItem("username"); // Assuming username is stored too
-      setUsername(storedUsername);
+      setUsername(storedUsername.slice(0, 2).toUpperCase());
     }
   }, []);
 
