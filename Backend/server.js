@@ -54,38 +54,64 @@ app.get("/dare/:timeOfDay/:category", async (req, res) => {
 
 // User Authentication/Login Page
 app.post("/api/auth", async (req, res) => {
-  const { username, action } = req.body;
+  const { username, email, action } = req.body;
 
-  // Validate username
+  // Validate username and email
   if (!username || username.trim() === "") {
     return res.status(400).json({ message: "Username cannot be empty" });
   }
+  if (!email || email.trim() === "") {
+    return res.status(400).json({ message: "Email cannot be empty" });
+  }
+
+  // Normalize the username and email to lowercase
+  const normalizedUsername = username.toLowerCase();
+  const normalizedEmail = email.toLowerCase();
 
   try {
-    const userRef = db.collection("users").doc(username);
-    const userDoc = await userRef.get();
+    const usersRef = db.collection("users");
 
     if (action === "create") {
-      // If creating a user and they don't exist, create one
-      if (!userDoc.exists) {
-        await userRef.set({ username });
+      // If creating a user, ensure the username/email doesn't already exist
+      const userQuery = await usersRef
+        .where("username", "==", normalizedUsername)
+        .where("email", "==", normalizedEmail)
+        .get();
 
-        //Create corresponding userProgress document/collection
-        const userProgressRef = db.collection("userProgress").doc(username);
+      if (userQuery.empty) {
+        // Create new user document
+        await usersRef.doc(normalizedUsername).set({
+          username: normalizedUsername,
+          email: normalizedEmail,
+        });
+
+        // Create corresponding userProgress document/collection
+        const userProgressRef = db
+          .collection("userProgress")
+          .doc(normalizedUsername);
         await userProgressRef.set({ totalCompleted: 0 });
 
         return res.json({
-          message: "User created successfully! You can now log in!!!!!!",
+          message: "User created successfully! You can now log in.",
         });
       } else {
-        return res
-          .status(400)
-          .json({ message: "Username already exists. Please choose another." });
+        return res.status(400).json({
+          message: "Username or email already exists. Please choose another.",
+        });
       }
     } else if (action === "login") {
-      // If logging in, check if the user exists
-      if (userDoc.exists) {
-        return res.json({ message: "Login successful", username });
+      // If logging in, check if the user exists with the same username/email
+      const userQuery = await usersRef
+        .where("username", "==", normalizedUsername)
+        .where("email", "==", normalizedEmail)
+        .get();
+
+      if (!userQuery.empty) {
+        return res.json({
+          message: "Login successful",
+          username: normalizedUsername,
+          email: normalizedEmail,
+        });
       } else {
         return res.status(401).json({ message: "Invalid credentials" });
       }
