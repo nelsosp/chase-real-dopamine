@@ -11,8 +11,10 @@ import backgroundNight from "../assets/Night.jpg";
 import image4 from "../assets/SocialButterfly.jpg";
 import image5 from "../assets/SweatItOut.jpg";
 import image6 from "../assets/Wildcard.jpg";
+import Clock from "./Clock";
 import "./DareCarousel.css";
 import DareCompletion from "./DareCompletion";
+import LottieAnimation from "./LottieDare";
 import MenuBar from "./MenuBar";
 import UsernameBar from "./UsernameBar";
 
@@ -64,15 +66,15 @@ const DareCarousel = () => {
     if (hours >= 6 && hours < 12) {
       internalTimeOfDay = "Morning";
       description =
-        "The morning sun rises with a quiet determination, casting a warm glow that inspires a fresh start and endless possibilities ahead.";
+        "Quiet determination, casting a warm glow that inspires a fresh start.";
     } else if (hours >= 12 && hours < 19) {
       internalTimeOfDay = "Afternoon";
       description =
-        "The afternoon hums with a vibrant energy, where the day's momentum propels you forward, fueling both focus and action.";
+        "Vibrant energy, where the day's momentum propels you forward.";
     } else {
       internalTimeOfDay = "Night";
       description =
-        "As the night falls, a peaceful stillness settles in, offering a moment of reflection and calm before recharging for tomorrow's journey.";
+        "A peaceful stillness settles in, offering a moment of reflection.";
     }
 
     setTimeOfDay(internalTimeOfDay); // Store the internal value
@@ -200,22 +202,6 @@ const DareCarousel = () => {
     variableWidth: false,
   };
 
-  const currentTime = new Date();
-  const hours = currentTime.getHours();
-  const minutes = currentTime.getMinutes();
-
-  // Format hours in 12-hour format
-  const formattedHour = hours % 12 === 0 ? 12 : hours % 12;
-
-  // Format minutes to ensure two digits (e.g., "05" instead of "5")
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
-  // Determine AM or PM
-  const amPm = hours >= 12 ? "PM" : "AM";
-
-  // Combine everything into a string
-  const formattedTime = `${formattedHour}:${formattedMinutes} ${amPm}`;
-
   const username = localStorage.getItem("username");
 
   return (
@@ -231,22 +217,7 @@ const DareCarousel = () => {
     >
       <MenuBar />
       <UsernameBar />
-      <p
-        style={{
-          textAlign: "center", // Corrected camelCase
-          color: "white",
-          position: "absolute",
-          transform: "translateX(-50%)",
-          left: "50%",
-          width: "100%",
-          top: "-8px",
-          fontSize: "1.5em", // Corrected camelCase
-          fontWeight: 600,
-          textShadow: "3px 3px 8px rgba(0, 0, 0, 1)", // Corrected camelCase
-        }}
-      >
-        {formattedTime}
-      </p>
+      <Clock />
       <h1>{displayTimeOfDay}</h1> {/* Use custom display name */}
       <p>{timeOfDayDescription}</p>
       <Slider {...sliderSettings} ref={sliderRef}>
@@ -279,6 +250,8 @@ const DareCarousel = () => {
           className={`overlay2 ${isOverlayVisible ? "show" : ""}`}
           onClick={closeOverlay}
         >
+          {" "}
+          <LottieAnimation />
           <div
             className="overlay2-content"
             onClick={(e) => e.stopPropagation()}

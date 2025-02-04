@@ -11,7 +11,7 @@
   text-align: center;
   color: white;
   position: absolute;
-  top: 100px;
+  top: 60px;
   left: 50%;
   width: 100%;
   transform: translateX(-50%);
@@ -20,12 +20,12 @@
 
 .main-page p {
   text-align: center;
-  color: white;
+  color: rgb(200, 200, 200);
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
   width: 90%;
-  top: 150px;
+  top: 110px;
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
   font-weight: 600;
 }
@@ -33,7 +33,7 @@
 .carousel-slide {
   pointer-events: all;
   touch-action: pan-y;
-  height: 100vh;
+  height: 90vh;
   /* transition: transform 0.3s ease; */
 }
 
@@ -46,11 +46,11 @@
   text-align: center;
   overflow: hidden;
   /* height: auto; */
-  width: 80%;
+  /* width: 80%; */
   position: relative;
   margin: 0 auto;
   user-select: none;
-  top: 40%;
+  top: 35%;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 1);
 }
 
@@ -98,6 +98,12 @@
   cursor: pointer;
   box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+}
+
+.get-dare-btn:hover {
+  background-color: #45bc00;
+  cursor: pointer;
+  transition: transform 0.5s ease;
 }
 
 /***** Fix overlay fade in *******/

@@ -55,9 +55,9 @@ const MenuBar = () => {
                 <span></span>
               )}
             </li>
-            <li>
+            {/* <li>
               <a href="/about-us">About Us</a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
