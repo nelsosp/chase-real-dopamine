@@ -6,6 +6,7 @@ const DareCompletion = ({ username }) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [completedFive, setCompletedFive] = useState(false);
+  const [activeButton, setActiveButton] = useState("");
 
   const getBackendUrl = () => {
     if (window.location.hostname === "localhost") {
@@ -20,6 +21,7 @@ const DareCompletion = ({ username }) => {
     setLoading(true);
     setMessage("");
     setError("");
+    setActiveButton(action);
 
     const backendUrl = getBackendUrl();
 
@@ -43,6 +45,9 @@ const DareCompletion = ({ username }) => {
       setError("Error processing dare action: " + err.message);
     } finally {
       setLoading(false);
+      setTimeout(() => {
+        setActiveButton("");
+      }, 1000);
     }
   };
 
@@ -59,7 +64,9 @@ const DareCompletion = ({ username }) => {
   return (
     <div>
       <button
-        className="complete-btn"
+        className={`complete-btn ${
+          activeButton === "complete" ? "active" : ""
+        }`}
         onClick={() => handleDareAction("complete")}
         disabled={loading}
       >
@@ -67,7 +74,7 @@ const DareCompletion = ({ username }) => {
       </button>
 
       <button
-        className="chicken-out-btn"
+        className={`chicken-out-btn ${activeButton === "fail" ? "active" : ""}`}
         onClick={() => handleDareAction("fail")}
         disabled={loading}
       >

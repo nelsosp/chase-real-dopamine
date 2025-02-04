@@ -1,9 +1,9 @@
 import React from "react";
-import DareCarousel from "./DareCarousel";
+import LottieAnimation from "./LottieDare";
 const ComponentMaker = () => {
   return (
     <div>
-      <DareCarousel />
+      <LottieAnimation />
     </div>
   );
 };
