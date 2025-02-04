@@ -12,8 +12,7 @@ admin.initializeApp({
 const db = admin.firestore();
 
 const corsOptions = {
-  origin:
-    "https://chase-real-dopamine-frontend-1047292940162.us-central1.run.app", // Only allow requests from this frontend URL
+  origin: "*", // Allow all origins (not recommended for production)
   methods: "GET, POST",
   allowedHeaders: "Content-Type",
 };
