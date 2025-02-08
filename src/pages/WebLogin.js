@@ -1,8 +1,8 @@
-import image from "../assets/PhoneLogin.jpg";
-import MenuBar from "./MenuBar";
-import "./PhoneLogin.css";
+import video from "../assets/Login.mp4";
+import MenuBar from "../Components/MenuBar";
+import "./WebLogin.css";
 
-const PhoneLogin = ({
+const WebLogin = ({
   username,
   setUsername,
   email,
@@ -24,17 +24,23 @@ const PhoneLogin = ({
         </div>
       )}
       <form className={isLoading ? "fade-out" : ""}>
-        <div className="phone-page-container">
-          <img src={image} alt="Background" className="background-image" />
+        <div className="web-page-container">
+          <video
+            className="background-video"
+            src={video}
+            muted
+            loop
+            autoPlay
+          ></video>
           <div>
             <MenuBar />
           </div>
           <h1>Dopamine Dares</h1>
-          <div className="phone-login-container">
+          <div className="web-login-container">
             {error && <div className="error">{error}</div>}
             {successMessage && <div className="success">{successMessage}</div>}
             <div>
-              <label className="phone-input-fields">
+              <label className="web-input-fields">
                 USERNAME
                 <input
                   type="text"
@@ -44,7 +50,7 @@ const PhoneLogin = ({
                 />
               </label>
               {/* this is for future implementation of taking emails in */}
-              <label className="phone-input-fields">
+              <label className="web-input-fields">
                 EMAIL
                 <input
                   type="text"
@@ -53,19 +59,19 @@ const PhoneLogin = ({
                   required
                 />
               </label>
-              <a href="/forgot-password" className="phone-forgot-password-link">
+              <a href="/forgot-password" className="web-forgot-password-link">
                 forgot username?
               </a>
             </div>
             <button
-              className="phone-login-button"
+              className="web-login-button"
               type="button"
               onClick={handleLogin}
             >
               LOG IN
             </button>
             <button
-              className="phone-create-user-button"
+              className="web-create-user-button"
               type="button"
               onClick={handleCreateUser}
             >
@@ -78,4 +84,4 @@ const PhoneLogin = ({
   );
 };
 
-export default PhoneLogin;
+export default WebLogin;

@@ -1,16 +1,39 @@
-.lottie-dare-video {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40%;
-  height: auto;
+/* mobile screen */
+@media (max-width: 480px) {
+  .lottie-dare-video {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: auto;
+  }
+
+  .lottie-dare-video video {
+    width: 80%;
+    height: auto;
+  }
 }
 
-.lottie-dare-video video {
-  width: 80%;
-  height: auto;
+/* For larger screens (min-width: 480px) */
+@media (min-width: 480px) {
+  .lottie-dare-video {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: auto;
+  }
+
+  .lottie-dare-video video {
+    width: 80%;
+    height: auto;
+  }
 }
