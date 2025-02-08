@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import video from "../assets/WebLander.mp4";
-import MenuBar from "./MenuBar";
-import UsernameBar from "./UsernameBar";
+import MenuBar from "../Components/MenuBar";
+import UsernameBar from "../Components/UsernameBar";
 import "./WebLander.css";
 
 const WebLander = () => {

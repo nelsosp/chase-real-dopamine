@@ -11,12 +11,12 @@ import backgroundNight from "../assets/Night.jpg";
 import image4 from "../assets/SocialButterfly.jpg";
 import image5 from "../assets/SweatItOut.jpg";
 import image6 from "../assets/Wildcard.jpg";
-import Clock from "./Clock";
+import Clock from "../Components/Clock";
+import DareCompletion from "../Components/DareCompletion";
+import LottieAnimation from "../Components/LottieDare";
+import MenuBar from "../Components/MenuBar";
+import UsernameBar from "../Components/UsernameBar";
 import "./DareCarousel.css";
-import DareCompletion from "./DareCompletion";
-import LottieAnimation from "./LottieDare";
-import MenuBar from "./MenuBar";
-import UsernameBar from "./UsernameBar";
 
 // Mapping timeOfDay to custom display names
 const timeOfDayNames = {

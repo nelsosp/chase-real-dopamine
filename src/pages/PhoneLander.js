@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import image from "../assets/PhoneLander.jpg";
-import MenuBar from "./MenuBar";
+import MenuBar from "../Components/MenuBar";
+import UsernameBar from "../Components/UsernameBar";
 import "./PhoneLander.css";
-import UsernameBar from "./UsernameBar";
 
 const PhoneLander = () => {
   const navigate = useNavigate();
@@ -27,7 +27,9 @@ const PhoneLander = () => {
       <div className="phone-lander-title">Dopamine Dares</div>
       <MenuBar />
       <UsernameBar />
-      <img src={image} alt="Background" className="background-image" />
+      <div className="image-container">
+        <img src={image} alt="Background" className="phone-lander-image" />
+      </div>
       <button className="phone-lander-button" onClick={handleUserNav}>
         Start Your Journey
       </button>

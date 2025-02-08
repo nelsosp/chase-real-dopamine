@@ -1,27 +1,33 @@
 import { useEffect } from "react";
 import personalimage from "../assets/Personal.jpg";
-import image from "../assets/PhoneAboutUs.jpg";
-import MenuBar from "./MenuBar";
-import "./PhoneAboutUs.css";
-import UsernameBar from "./UsernameBar";
+import video from "../assets/WebAboutUs.mp4";
+import MenuBar from "../Components/MenuBar";
+import UsernameBar from "../Components/UsernameBar";
+import "./WebAboutUs.css";
 
-const PhoneAboutUs = () => {
+const WebAboutUs = () => {
   useEffect(() => {
-    document.body.classList.add("phone-body");
-    document.documentElement.classList.add("phone-html");
+    document.body.classList.add("web-body");
+    document.documentElement.classList.add("web-html");
 
     return () => {
-      document.body.classList.remove("phone-body");
-      document.documentElement.classList.remove("phone-html");
+      document.body.classList.remove("web-body");
+      document.documentElement.classList.remove("web-html");
     };
   }, []);
   return (
-    <div className="phone-about-us">
-      <div className="phone-about-us-title">Dopamine Dares</div>
+    <div className="web-about-us">
+      <div className="web-about-us-title">Dopamine Dares</div>
       <MenuBar />
       <UsernameBar />
-      <img src={image} alt="Background" className="background-image" />
-      <div className="phone-about-us-message">
+      <video
+        className="background-video"
+        src={video}
+        muted
+        loop
+        autoPlay
+      ></video>{" "}
+      <div className="web-about-us-message">
         In a screen-eccentric world, Dopamine Dares aims to inspire individuals
         to disconnect from the digital noise and reconnect with real-life
         experiences. Our mission is to motivate and empower users to explore,
@@ -31,9 +37,9 @@ const PhoneAboutUs = () => {
       <img
         src={personalimage}
         alt="Background"
-        className="background-image-phone-personal"
+        className="background-image-web-personal"
       />
-      <div className="phone-personal-text-field">
+      <div className="web-personal-text-field">
         Responsible for the planning, architecture/design, and full-stack
         development of this application, with a deep passion for creating
         meaningful experiences that inspire people to appreciate and embrace
@@ -43,4 +49,4 @@ const PhoneAboutUs = () => {
   );
 };
 
-export default PhoneAboutUs;
+export default WebAboutUs;

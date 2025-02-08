@@ -1,11 +1,11 @@
 // src/Routes.js
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import AboutUs from "./Components/AboutUs";
 import ComponentMaker from "./Components/ComponentMaker";
-import DareCarousel from "./Components/DareCarousel";
-import Lander from "./Components/Lander";
-import Login from "./Components/Login";
+import AboutUs from "./pages/AboutUs";
+import DareCarousel from "./pages/DareCarousel";
+import Lander from "./pages/Lander";
+import Login from "./pages/Login";
 
 const AppRoutes = () => {
   return (
