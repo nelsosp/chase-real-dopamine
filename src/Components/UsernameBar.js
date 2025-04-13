@@ -11,10 +11,13 @@ const UsernameBar = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      const storedUsername = localStorage.getItem("username"); // Assuming username is stored too
-      setUsername(storedUsername.slice(0, 2).toUpperCase());
+      const storedUsername = localStorage.getItem("username");
+      if (storedUsername) {
+        setUsername(storedUsername.slice(0, 2).toUpperCase());
+      }
     }
   }, []);
+  
 
   const handleSignIn = () => {
     navigate("/login"); // Navigate to the login page
