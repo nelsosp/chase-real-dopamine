@@ -63,6 +63,7 @@ body {
   border-radius: 25px;
   padding: 10px 20px;
   background-color: #007aff;
+
   cursor: pointer;
   font-weight: 600;
   position: absolute;
@@ -171,6 +172,7 @@ body {
   align-items: center;
   text-align: center;
   z-index: 90;
+  padding: 20px;
 }
 
 .web-lander-title-4 {
