@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import personalimage from "../assets/Personal.jpg";
-import video from "../assets/WebAboutUs.mp4";
+// import video from "../assets/WebAboutUs.mp4";
 import MenuBar from "../Components/MenuBar";
 import UsernameBar from "../Components/UsernameBar";
 import "./WebAboutUs.css";
@@ -20,13 +20,13 @@ const WebAboutUs = () => {
       <div className="web-about-us-title">Dopamine Dares</div>
       <MenuBar />
       <UsernameBar />
-      <video
+      {/* <video
         className="background-video"
         src={video}
         muted
         loop
         autoPlay
-      ></video>{" "}
+      ></video>{" "} */}
       <div className="web-about-us-message">
         In a screen-eccentric world, Dopamine Dares aims to inspire individuals
         to disconnect from the digital noise and reconnect with real-life
