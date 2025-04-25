@@ -36,7 +36,7 @@ const WebLander = () => {
           loop
           autoPlay
         ></video>{" "}
-        <div className="lottie-container">
+        <div className="web-lander-lottie-container">
           <DotLottieReact
             src="https://lottie.host/db1d690c-5e6d-436f-816f-469a637d1448/QQmf8Olaht.lottie"
             autoplay

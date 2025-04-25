@@ -1,7 +1,7 @@
 .phone-lander-title {
-  color: #f9c21b;
+  color: whitesmoke;
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -150%);
   font-size: 2rem;
@@ -11,13 +11,27 @@
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 }
 
+.phone-lander-heading-1 {
+  color: whitesmoke;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -150%);
+  position: absolute;
+  top: 40%;
+  font-weight: 400;
+  pointer-events: none;
+  font-size: 1rem;
+}
+
 .phone-lander-button {
   color: white;
   border: none;
   border-radius: 15px;
-  border: 1px solid #f9c21b;
+  border: 1px solid #007aff;
   position: absolute;
-  bottom: 45%;
+  bottom: 52%;
   transform: translateX(-50%);
   padding: 10px 20px;
   background-color: rgba(255, 255, 255, 0);
@@ -29,7 +43,7 @@
   background-color: #f9c21b;
   background: transparent;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(249, 194, 27, 0.8);
+  box-shadow: 0 0 20px rgba(0, 122, 255, 0.8);
   cursor: pointer;
   transition: transform 0.5s ease;
 }
@@ -39,4 +53,213 @@
   height: 100vh;
   object-fit: cover;
   z-index: -1;
+}
+
+.phone-lander-lottie-container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  width: 300px;
+}
+
+.phone-lander-section-2 {
+  position: relative;
+  background-image: linear-gradient(
+    to bottom,
+    #ffffff,
+    #eeeeee,
+    #dedede,
+    #cdcdcd,
+    #bdbdbd
+  );
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 90;
+}
+
+.phone-lander-title-2 {
+  color: black;
+  font-size: 2rem;
+  font-weight: 600;
+  z-index: 10;
+  text-align: center;
+  position: relative;
+  top: -25%;
+}
+
+.phone-lander-heading-2 {
+  color: black;
+  z-index: 10;
+  text-align: center;
+  position: relative;
+  font-weight: 400;
+  font-size: 1rem;
+  z-index: 5;
+  top: -25%;
+}
+
+.phone-lander-section-3 {
+  position: relative;
+  height: 100vh;
+  background-color: #fdf6e3;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 90;
+}
+
+.phone-lander-title-3 {
+  color: black;
+  font-size: 2rem;
+  font-weight: 600;
+  z-index: 10;
+  text-align: center;
+  position: relative;
+  top: -20%;
+}
+
+.phone-lander-heading-3 {
+  color: black;
+  z-index: 10;
+  text-align: center;
+  position: relative;
+  font-weight: 400;
+  font-size: 1rem;
+  z-index: 5;
+  top: -20%;
+}
+
+.phone-lander-section-4 {
+  height: 100vh;
+  position: relative;
+  background-color: black;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 90;
+}
+
+.phone-lander-title-4 {
+  color: whitesmoke;
+  font-size: 2rem;
+  font-weight: 600;
+  z-index: 10;
+  text-align: center;
+  position: relative;
+  top: -20%;
+}
+
+.phone-lander-heading-4 {
+  color: whitesmoke;
+  z-index: 10;
+  text-align: center;
+  position: relative;
+  font-weight: 400;
+  font-size: 1rem;
+  z-index: 5;
+  top: -20%;
+}
+
+.phone-lander-section-5 {
+  height: 100vh;
+  position: relative;
+  background-color: #fdf6e3;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 90;
+}
+
+.phone-lander-title-5 {
+  color: black;
+  font-size: 2rem;
+  font-weight: 600;
+  z-index: 10;
+  text-align: center;
+  position: relative;
+  top: -20%;
+}
+
+.phone-lander-heading-5 {
+  color: black;
+  z-index: 10;
+  text-align: center;
+  position: relative;
+  font-weight: 400;
+  font-size: 1rem;
+  z-index: 5;
+  top: -20%;
+}
+
+.phone-icon-box-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  /* flex-wrap: wrap; */
+  max-width: 250px;
+}
+
+.phone-icon-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 280px;
+  transition: transform 0.3s ease;
+}
+
+.phone-icon-box:hover {
+  transform: translateY(-5px);
+}
+
+.phone-icon {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.phone-icon-box-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.phone-icon-box-text {
+  font-size: 0.5rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.phone-icon-box-button {
+  background-color: #007aff;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phone-icon-box-button:hover {
+  background-color: transparent;
+  color: #007aff;
+  border: 2px solid #007aff;
+  box-shadow: 0 0 10px rgba(0, 122, 255, 0.5);
 }
