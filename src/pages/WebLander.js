@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import video2 from "../assets/WebLander2.mp4";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import Iphone1 from "../assets/Iphone1.png";
+import Iphone2 from "../assets/Iphone2.png";
+import Iphone3 from "../assets/Iphone3.png";
 import video from "../assets/WebLanderNew.mp4";
 import MenuBar from "../Components/MenuBar";
 import UsernameBar from "../Components/UsernameBar";
@@ -18,6 +21,13 @@ const WebLander = () => {
       document.body.classList.remove("web-body");
       document.documentElement.classList.remove("web-html");
     };
+  }, []);
+
+  useEffect(() => {
+    const carouselContent = document.querySelector(".carousel-content");
+    if (carouselContent) {
+      carouselContent.style.animationDuration = `15s`;
+    }
   }, []);
 
   const handleUserNav = () => {
@@ -82,13 +92,52 @@ const WebLander = () => {
           </div>
         </div>
       </section>
-      <section className="section-3">
-        <div className="web-lander-title-3">Meet Your Digital Reset Button</div>
-        <h1 className="web-lander-heading-3">
+      <section class="section-3">
+        <div class="web-lander-title-3">Meet Your Digital Reset Button</div>
+        <h1 class="web-lander-heading-3">
           Our app gently motivates you to unplug and make space for real
           experiences, relationships, and personal joy.
         </h1>
+
+        <div className="iphone-carousel">
+          <div className="carousel-content">
+            {/* First set */}
+            <img
+              src={Iphone1}
+              alt="iPhone Mockup 1"
+              className="iphone-mockup"
+            />
+            <img
+              src={Iphone2}
+              alt="iPhone Mockup 2"
+              className="iphone-mockup"
+            />
+            <img
+              src={Iphone3}
+              alt="iPhone Mockup 3"
+              className="iphone-mockup"
+            />
+
+            {/* Duplicate set */}
+            <img
+              src={Iphone1}
+              alt="iPhone Mockup 1 duplicate"
+              className="iphone-mockup"
+            />
+            <img
+              src={Iphone2}
+              alt="iPhone Mockup 2 duplicate"
+              className="iphone-mockup"
+            />
+            <img
+              src={Iphone3}
+              alt="iPhone Mockup 3 duplicate"
+              className="iphone-mockup"
+            />
+          </div>
+        </div>
       </section>
+
       <section className="section-4">
         <div className="web-lander-title-4">
           Steps to start living more and scrolling less.

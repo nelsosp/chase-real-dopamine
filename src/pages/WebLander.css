@@ -129,7 +129,8 @@ body {
 .section-3 {
   position: relative;
   height: 100vh;
-  background-color: #fdf6e3;
+  /* background-color: #fdf6e3; */
+  background-color: black;
   color: black;
   display: flex;
   flex-direction: column;
@@ -140,7 +141,7 @@ body {
 }
 
 .web-lander-title-3 {
-  color: black;
+  color: white;
   font-size: 3.5rem;
   font-weight: 600;
   z-index: 10;
@@ -150,7 +151,7 @@ body {
 }
 
 .web-lander-heading-3 {
-  color: black;
+  color: white;
   z-index: 10;
   text-align: center;
   position: relative;
@@ -291,4 +292,60 @@ body {
   pointer-events: none;
   transform: translate(-50%, -50%);
   width: 400px;
+}
+
+/* Outer container for the carousel */
+/* .iphone-carousel {
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-content {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+.iphone-mockup {
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 10px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+} */
+
+.iphone-carousel {
+  position: absolute;
+  overflow: hidden;
+  width: 50%;
+}
+
+.carousel-content {
+  display: flex;
+  width: fit-content;
+  animation: scroll-left 30s linear infinite;
+}
+
+.iphone-mockup {
+  width: 200px;
+  margin-right: 20px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
